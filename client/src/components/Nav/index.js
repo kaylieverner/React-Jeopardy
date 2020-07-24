@@ -4,7 +4,20 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
-        React Reading List
+        React Jeopardy
+      </a>
+
+      <a className="navbar-brand" href="/login">
+        Log In
+      </a>
+      <a className="navbar-brand" href="/play">
+        Play
+      </a>
+      <a className="navbar-brand" href="/practice">
+        Practice
+      </a>
+      <a className="navbar-brand" href="/leaderboard">
+        Leaderboard
       </a>
     </nav>
   );
