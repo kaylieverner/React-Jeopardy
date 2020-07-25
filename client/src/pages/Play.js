@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import {Box, Table, TableHeader, TableRow, TableCell, TableBody} from 'grommet';
+import {Box, Table, TableHeader, TableRow, TableCell, TableBody, DataTable, Text, Meter} from 'grommet';
 
 // set up game board 
 // API calls to get questions/answers/categories
@@ -64,7 +64,34 @@ function Play() {
         </TableBody>
       </Table>
 
-      
+      <DataTable
+  columns={[
+    {
+      property: 'name',
+      header: <Text>Name</Text>,
+      primary: true,
+    },
+    {
+      property: 'percent',
+      header: 'Points',
+      render: datum => (
+        <Box pad={{ vertical: 'xsmall' }}>
+          <Meter
+            values={[{ value: datum.percent }]}
+            thickness="small"
+            size="small"
+          />
+        </Box>
+      ),
+    },
+  ]}
+  data={[
+    { name: 'Player 1', percent: 20 },
+    { name: 'Player 2', percent: 30 },
+    { name: 'Player 3', percent: 40 },
+    { name: 'Player 4', percent: 80 },
+  ]}
+/>
     </Box>
   );
 }
