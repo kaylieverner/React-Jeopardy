@@ -6,9 +6,11 @@ function Nav() {
       <a className="navbar-brand" href="/">
         React Jeopardy
       </a>
-
       <a className="navbar-brand" href="/login">
         Log In
+      </a>
+      <a className="navbar-brand" href="/">
+        Logout
       </a>
       <a className="navbar-brand" href="/play">
         Play

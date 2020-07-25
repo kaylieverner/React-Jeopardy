@@ -6,13 +6,14 @@ import Practice from "./pages/Practice";
 import Leaderboard from "./pages/Leaderboard";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
-import { Grommet } from 'grommet';
+import { Grommet } from 'grommet'; 
 
 function App() {
   return (
+    <Grommet plain>
     <Router>
       <div>
-        <Nav />
+        <Nav></Nav>
         <Switch>
           <Route exact path={["/", "/login"]}>
             <Login />
@@ -32,6 +33,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </Grommet>
   );
 }
 
