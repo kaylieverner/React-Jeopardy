@@ -1,23 +1,21 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
+import { Box, Grommet } from 'grommet';
+import QuestionCard from "../components/QuestionCard/QuestionCard"
+
+//practice game
+//single question card that serves a random question 
+
 
 function Practice() {
   return (
-    <Container fluid>
-      <Row>
-        <Col size="md-12">
-          <Jumbotron>
-            <h1>Practice</h1>
-            <h1>
-              <span role="img" aria-label="Face With Rolling Eyes Emoji">
-                🙄
-              </span>
-            </h1>
-          </Jumbotron>
-        </Col>
-      </Row>
-    </Container>
+    <Grommet>
+    <Box>
+      <h1>Practice</h1>
+      <QuestionCard></QuestionCard>
+    </Box>
+    </Grommet>
   );
 }
 
