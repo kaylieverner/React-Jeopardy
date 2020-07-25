@@ -2,6 +2,10 @@ import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 
+//practice game
+//single question card that serves a random question 
+
+
 function Practice() {
   return (
     <Container fluid>

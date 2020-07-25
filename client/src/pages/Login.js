@@ -6,13 +6,36 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import { Box, Button as GrommetButton, FormField, TextInput,Grommet } from 'grommet';
+
+// passport logic for user sign up and log in
+// DB logic
 
 function Login() {
 
-    return (
-<h2>login</h2>
-    );
-  }
+  return (
+    <Grommet>
+      <Box>
+        <h2>login and sign up</h2>
+        <Box>
+          <FormField label="Login">
+            <TextInput placeholder="username" />
+            <TextInput placeholder="password" />
+          </FormField>
+          <GrommetButton color="primary" label='Login' />
+        </Box>
+        <Box>
+          <FormField label="Sign Up">
+            <TextInput placeholder="username" />
+            <TextInput placeholder="password" />
+          </FormField>
+          <GrommetButton color="primary" label='Sign Up' />
+        </Box>
+      </Box>
+    </Grommet>
+
+  );
+}
 
 
 export default Login;
