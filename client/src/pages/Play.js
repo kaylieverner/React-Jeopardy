@@ -1,6 +1,7 @@
 import React from "react";
-import {Box, Table, TableHeader, TableRow, TableCell, TableBody, TextInput} from 'grommet';
+import {Box, Heading, Table, TableHeader, TableRow, TableCell, TableBody, TextInput} from 'grommet';
 import ScoreContainer from "../components/ScoreContainer/ScoreContainer";
+import PlayerScore from "../components/PlayerScore/PlayerScore";
 
 // set up game board 
 // API calls to get questions/answers/categories
@@ -72,16 +73,10 @@ function Play() {
           <ScoreContainer>
             <h1 className="mb-2">Scores</h1>
             <Box direction="row-responsive" gap="small">
-              <TextInput placeholder="Name"/>
-              <TextInput placeholder="Name"/>
-              <TextInput placeholder="Name"/>
-              <TextInput placeholder="Name"/>
-            </Box>
-            <Box direction="row-responsive" gap="small">
-              <div className="p1Score">100</div>
-              <div className="p1Score">100</div>
-              <div className="p1Score">100</div>
-              <div className="p1Score">100</div>
+              <PlayerScore></PlayerScore>
+              <PlayerScore></PlayerScore>
+              <PlayerScore></PlayerScore>
+              <PlayerScore></PlayerScore>
             </Box>
           </ScoreContainer>
         </div>
