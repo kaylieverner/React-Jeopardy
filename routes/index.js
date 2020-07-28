@@ -5,6 +5,9 @@ const apiRoutes = require("./api");
 // API Routes
 router.use("/api", apiRoutes);
 
+// Requiring our custom middleware for checking if a user is logged in
+var isAuthenticated = require('../config/middleware/isAuthenticated');
+
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
