@@ -3,7 +3,7 @@ import React from "react";
 function ScoreContainer({children}) {
   return (
 <div class="card">
-    <div class="card-body">
+    <div class="card-body ">
         {children}
     </div>
 </div>

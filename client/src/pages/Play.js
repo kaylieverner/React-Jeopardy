@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, Heading, Table, TableHeader, TableRow, TableCell, TableBody, TextInput} from 'grommet';
+import {Box, DropButton, Select, Table, TableHeader, TableRow, TableCell, TableBody, TextInput} from 'grommet';
 import ScoreContainer from "../components/ScoreContainer/ScoreContainer";
 import PlayerScore from "../components/PlayerScore/PlayerScore";
 
@@ -17,16 +17,36 @@ function Play() {
         <TableHeader>
           <TableRow>
             <TableCell scope="col" border="all">
-              Category 1
+              <Select
+                placeholder="Category"
+                options={['option 1', 'option 2', 'option 3']}
+                // value={value}
+                // onChange={({ option }) => setValue(option)}
+              />
             </TableCell>
             <TableCell scope="col" border="all">
-              Category 2
+              <Select
+                placeholder="Category"
+                options={['option 1', 'option 2', 'option 3']}
+                // value={value}
+                // onChange={({ option }) => setValue(option)}
+              />
             </TableCell>
             <TableCell scope="col" border="all">
-              Category 3
+              <Select
+                  placeholder="Category"
+                  options={['option 1', 'option 2', 'option 3']}
+                  // value={value}
+                  // onChange={({ option }) => setValue(option)}
+                />
             </TableCell>
             <TableCell scope="col" border="all">
-              Category 4
+              <Select
+                  placeholder="Category"
+                  options={['option 1', 'option 2', 'option 3']}
+                  // value={value}
+                  // onChange={({ option }) => setValue(option)}
+                />
             </TableCell>
           </TableRow>
         </TableHeader>
