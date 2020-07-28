@@ -1,7 +1,6 @@
 import React from "react";
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
-import {Box, Table, TableHeader, TableRow, TableCell, TableBody, DataTable, Text, Meter} from 'grommet';
+import {Box, Table, TableHeader, TableRow, TableCell, TableBody, TextInput} from 'grommet';
+import ScoreContainer from "../components/ScoreContainer/ScoreContainer";
 
 // set up game board 
 // API calls to get questions/answers/categories
@@ -10,8 +9,10 @@ import {Box, Table, TableHeader, TableRow, TableCell, TableBody, DataTable, Text
 
 function Play() {
   return (
-    <Box>
-      <Table>
+    <div className="container mt-4">
+      <div className="row">
+        <div className="col">
+        <Table>
         <TableHeader>
           <TableRow>
             <TableCell scope="col" border="all">
@@ -29,13 +30,13 @@ function Play() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell scope="row">
-              <strong>Eric</strong>
+        <TableRow>
+            <TableCell scope="row" border="all">
+              Chris
             </TableCell>
-            <TableCell border="all">Coconut</TableCell>
-            <TableCell border="all">Coconut</TableCell>
-            <TableCell border="all">Coconut</TableCell>
+            <TableCell border="all">Watermelon</TableCell>
+            <TableCell border="all">Watermelon</TableCell>
+            <TableCell border="all">Watermelon</TableCell>
           </TableRow>
           <TableRow>
             <TableCell scope="row" border="all">
@@ -63,36 +64,30 @@ function Play() {
           </TableRow>
         </TableBody>
       </Table>
+        </div>
+      </div>
 
-      <DataTable
-  columns={[
-    {
-      property: 'name',
-      header: <Text>Name</Text>,
-      primary: true,
-    },
-    {
-      property: 'percent',
-      header: 'Points',
-      render: datum => (
-        <Box pad={{ vertical: 'xsmall' }}>
-          <Meter
-            values={[{ value: datum.percent }]}
-            thickness="small"
-            size="small"
-          />
-        </Box>
-      ),
-    },
-  ]}
-  data={[
-    { name: 'Player 1', percent: 20 },
-    { name: 'Player 2', percent: 30 },
-    { name: 'Player 3', percent: 40 },
-    { name: 'Player 4', percent: 80 },
-  ]}
-/>
-    </Box>
+      <div className="row">
+        <div className="col mt-5">
+          <ScoreContainer>
+            <h1 className="mb-2">Scores</h1>
+            <Box direction="row-responsive" gap="small">
+              <TextInput placeholder="Name"/>
+              <TextInput placeholder="Name"/>
+              <TextInput placeholder="Name"/>
+              <TextInput placeholder="Name"/>
+            </Box>
+            <Box direction="row-responsive" gap="small">
+              <div className="p1Score">100</div>
+              <div className="p1Score">100</div>
+              <div className="p1Score">100</div>
+              <div className="p1Score">100</div>
+            </Box>
+          </ScoreContainer>
+        </div>
+      </div>
+      </div>
+
   );
 }
 
