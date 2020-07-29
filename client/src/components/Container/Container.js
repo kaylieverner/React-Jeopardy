@@ -1,6 +1,6 @@
 import React from "react";
 
-function ScoreContainer({children}) {
+function Container({children}) {
   return (
 <div class="card">
     <div class="card-body ">
@@ -10,4 +10,4 @@ function ScoreContainer({children}) {
   );
 }
 
-export default ScoreContainer;
+export default Container;

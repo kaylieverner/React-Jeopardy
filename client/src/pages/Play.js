@@ -1,7 +1,9 @@
 import React from "react";
 import {Box, DropButton, Select, Table, TableHeader, TableRow, TableCell, TableBody, TextInput} from 'grommet';
-import ScoreContainer from "../components/ScoreContainer/ScoreContainer";
+import Container from "../components/Container/Container";
 import PlayerScore from "../components/PlayerScore/PlayerScore";
+import BoardCategory from "../components/BoardCategory/BoardCategory";
+import Board from "../components/Board/Board";
 
 // set up game board 
 // API calls to get questions/answers/categories
@@ -13,84 +15,17 @@ function Play() {
     <div className="container mt-4">
       <div className="row">
         <div className="col">
-        <Table>
-        <TableHeader>
-          <TableRow>
-            <TableCell scope="col" border="all">
-              <Select
-                placeholder="Category"
-                options={['option 1', 'option 2', 'option 3']}
-                // value={value}
-                // onChange={({ option }) => setValue(option)}
-              />
-            </TableCell>
-            <TableCell scope="col" border="all">
-              <Select
-                placeholder="Category"
-                options={['option 1', 'option 2', 'option 3']}
-                // value={value}
-                // onChange={({ option }) => setValue(option)}
-              />
-            </TableCell>
-            <TableCell scope="col" border="all">
-              <Select
-                  placeholder="Category"
-                  options={['option 1', 'option 2', 'option 3']}
-                  // value={value}
-                  // onChange={({ option }) => setValue(option)}
-                />
-            </TableCell>
-            <TableCell scope="col" border="all">
-              <Select
-                  placeholder="Category"
-                  options={['option 1', 'option 2', 'option 3']}
-                  // value={value}
-                  // onChange={({ option }) => setValue(option)}
-                />
-            </TableCell>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-        <TableRow>
-            <TableCell scope="row" border="all">
-              Chris
-            </TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell scope="row" border="all">
-              Chris
-            </TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell scope="row" border="all">
-              Chris
-            </TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell scope="row" border="all">
-            Chris
-            </TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+          <Container>
+            <div className="boardDiv">
+              <Board/>
+            </div>
+          </Container>
         </div>
       </div>
 
       <div className="row">
         <div className="col mt-5">
-          <ScoreContainer>
+          <Container>
             <h1 className="mb-2">Scores</h1>
             <Box direction="row-responsive" gap="small">
               <PlayerScore></PlayerScore>
@@ -98,7 +33,7 @@ function Play() {
               <PlayerScore></PlayerScore>
               <PlayerScore></PlayerScore>
             </Box>
-          </ScoreContainer>
+          </Container>
         </div>
       </div>
       </div>
