@@ -5,12 +5,15 @@ import PlayerScore from "../components/PlayerScore/PlayerScore";
 import BoardCategory from "../components/BoardCategory/BoardCategory";
 import Board from "../components/Board/Board";
 
+
 // set up game board 
 // API calls to get questions/answers/categories
 // Player scores
 // Save scores to DB 
 
+
 function Play() {
+  //
   return (
     <div className="container mt-4">
       <div className="row">
