@@ -1,6 +1,6 @@
 import React from "react";
-//import { Col, Row, Container } from "../components/Grid";
-//import Jumbotron from "../components/Jumbotron";
+import { Col, Row, } from "../components/Grid";
+import Jumbotron from "../components/Jumbotron";
 import { Box, Grommet, } from 'grommet';
 //import Grid from "../components/Grid";
 import { Table, Container } from 'reactstrap';
@@ -8,41 +8,28 @@ import { Table, Container } from 'reactstrap';
 //log of high scores from available users 
 //api routes to get and post score data the user enters 
 
- function Leaderboard() {
-  return (
-   <Grommet>
-    <Box>
-      <h3>Top 5!</h3>
-    </Box>
-   </Grommet>
-    // <Container fluid>
-    //   <Row>
-    //     <Col size="md-12">
-    //       <Jumbotron>
-    //         <h1>Leaderboard</h1>
-    //         <h1>
-    //           <span role="img" aria-label="Face With Rolling Eyes Emoji">
-    //             🙄
-    //           </span>
-    //         </h1>
-    //       </Jumbotron>
-    //     </Col>
-    //   </Row>
-    //   <Row>
-    //     <h1> Rank </h1>
-    //   </Row>
-    // </Container>
-  );
-}
-
 const Board = (props) => {
   return (
     <Container>
+
     <Grommet>
     <Box>
       <h3>Top 5!</h3>
     </Box>
    </Grommet>
+
+    <Row>
+       <Col size="md-12">
+        <Jumbotron>
+          <h1>Leaderboard</h1>
+            <h1>
+              <span role="img" aria-label="Face With Rolling Eyes Emoji">
+              🙄
+            </span>
+          </h1>
+         </Jumbotron>
+        </Col>
+     </Row>
 
     <Table responsive>
       <thead>
@@ -85,4 +72,3 @@ const Board = (props) => {
 }
 
 export default Board;
-//export default Leaderboard;
