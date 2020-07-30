@@ -4,6 +4,7 @@ import Jumbotron from "../components/Jumbotron";
 import { Box, Grommet, } from 'grommet';
 //import Grid from "../components/Grid";
 import { Table, Container } from 'reactstrap';
+import winner from './winner.jpg';
 
 //log of high scores from available users 
 //api routes to get and post score data the user enters 
@@ -11,7 +12,7 @@ import { Table, Container } from 'reactstrap';
 const Board = (props) => {
   return (
     <Container>
-
+   
     <Grommet>
     <Box>
       <h3>Top 5!</h3>
@@ -20,13 +21,13 @@ const Board = (props) => {
 
     <Row>
        <Col size="md-12">
-        <Jumbotron>
-          <h1>Leaderboard</h1>
-            <h1>
+        <Jumbotron styles={{ backgroundImage:`url(${winner})` }}>
+        <h1>Leaderboard</h1>
+          {/*<h1>
               <span role="img" aria-label="Face With Rolling Eyes Emoji">
               🙄
             </span>
-          </h1>
+          </h1> */}
          </Jumbotron>
         </Col>
      </Row>
