@@ -26,3 +26,5 @@ export function Col({ size, children }) {
     </div>
   );
 }
+
+//export default Grid;
