@@ -59,14 +59,14 @@ function Login() {
             <TextInput placeholder="username" />
             <TextInput placeholder="password" />
           </FormField>
-          <GrommetButton color="primary" label="Login" />
+          <GrommetButton color="primary" label="Login" onClick={loginUser()} />
         </Box>
         <Box>
           <FormField label="Sign Up">
             <TextInput placeholder="username" />
             <TextInput placeholder="password" />
           </FormField>
-          <GrommetButton color="primary" label="Sign Up" />
+          <GrommetButton color="primary" label="Sign Up" onClick={signUpUser()} />
         </Box>
       </Box>
     </Grommet>
