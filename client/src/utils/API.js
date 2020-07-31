@@ -1,10 +1,15 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
-  getBooks: function() {
-    return axios.get("/api/books");
+  // Gets random categories
+  getCategories: function(offset) {
+    return axios.get("http://jservice.io/api/categories?count=6&offset=" + offset)
   },
+  getQuestions: function(id) {
+    return axios.get("http://jservice.io/api/category?id=" + id)
+  },
+
+  ///////////////////////////////////////
   // Gets the book with the given id
   getBook: function(id) {
     return axios.get("/api/books/" + id);

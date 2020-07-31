@@ -1,12 +1,49 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import QuestionCard from "../QuestionCard/QuestionCard";
+import API from "../../utils/API";
 
 function Board() {
+const [categories, setCategories] = useState([]);
+const [questions, setQuestions] = useState([]);
+
+useEffect(() => {
+    loadCategories()
+  }, [])
+
+  useEffect(() => {
+      console.log(categories)
+      loadQuestions()
+  }, [categories])
+
+  useEffect(() => {
+    console.log(questions)
+}, [questions])
+
+  function loadCategories() {
+    API.getCategories()
+    .then(res => {
+        setCategories(res.data)
+        console.log(res.data)
+    })
+    .catch(err => console.log(err));
+  };
+
+  function loadQuestions() {
+    categories.forEach((category) => {
+        API.getQuestions(category.id)
+        .then(res => {
+        setQuestions([...questions, questions.push({id:category.id, questions: res.data.clues})])
+        })
+    })
+  }
+
   return (
     <div className="boardContainer">
         <div className="row categoryRow">
-            <CategoryCard></CategoryCard>
+  {categories.map((cat)=>{
+  return(
+  <CategoryCard title={cat.title}></CategoryCard>)})}
         </div>
         <div className="row 200Row">
             <QuestionCard></QuestionCard>

@@ -2,7 +2,6 @@ import React from "react";
 import {Box, DropButton, Select, Table, TableHeader, TableRow, TableCell, TableBody, TextInput} from 'grommet';
 import Container from "../components/Container/Container";
 import PlayerScore from "../components/PlayerScore/PlayerScore";
-import BoardCategory from "../components/BoardCategory/BoardCategory";
 import Board from "../components/Board/Board";
 
 
