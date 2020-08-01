@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "./style.css";
+import API from '../utils/API'
+
 
 class signUpForm extends Component {
   // Setting the component's initial state
@@ -24,12 +25,12 @@ class signUpForm extends Component {
 
     //function to perform post route  to api/loginuser
     function signUpUser(email, password) {
-      $.post("/api/signupuser", {
+      API.signUpPost({
         email: email,
         password: password,
       })
         .then(function () {
-          window.location.replace("/app");
+          window.location.replace("/login");
           // If there's an error, log the error
         })
         .catch(function (err) {
