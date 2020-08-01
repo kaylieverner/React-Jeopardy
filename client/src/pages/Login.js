@@ -6,63 +6,30 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
-import { Box, Button as GrommetButton, FormField, TextInput,Grommet } from 'grommet';
+import { Box, FormField, TextInput,Grommet } from 'grommet';
+import { Button } from 'reactstrap';
+
+import LoginCard from "../components/loginCard/LoginCard"
+
+import SignupCard from "../components/SignupCard/SignupCard"
 
 // passport logic for user sign up and log in
 // DB logic
 
 function Login() {
-
   return (
     <Container>
-    {/* <Grommet>
-      <Box>
-        <h2>login and sign up</h2> */}
-        {/* <Box>
-          <FormField label="Login">
-            <TextInput placeholder="username" />
-            <TextInput placeholder="password" />
-          </FormField>
-          <GrommetButton color="primary" label='Login' />
-        </Box> */}
-        {/* <Box>
-          <FormField label="Sign Up">
-            <TextInput placeholder="username" />
-            <TextInput placeholder="password" />
-          </FormField>
-          <GrommetButton color="primary" label='Sign Up' />
-        </Box> */}
-      {/* </Box>
-    </Grommet> */}
       <Row>
       <Col size="md-6">
-      <Jumbotron>
-          <h>Log In</h>
-          <Grommet>
-          <Box>
-          <FormField label="">
-            <TextInput placeholder="username" />
-            <TextInput placeholder="password" />
-          </FormField>
-          <GrommetButton color="primary" label='Login' />
-        </Box>
-          </Grommet>
-       </Jumbotron>
+      <Grommet>
+        <Box><LoginCard> </LoginCard></Box> 
+        </Grommet>
       </Col>
-
-      <Col size="md-6">
-      <Jumbotron>
-          <h>Sign Up</h>
-          <Grommet>
-          <Box>
-          <FormField label="">
-            <TextInput placeholder="username" />
-            <TextInput placeholder="password" />
-          </FormField>
-          <GrommetButton color="primary" label='Sign Up' />
-        </Box>
-          </Grommet>
-       </Jumbotron>
+      <Col size = "md-6">
+      <Grommet>
+        <Box><SignupCard> </SignupCard></Box> 
+        </Grommet>
+        {/* <Button color="primary"> Sign up </Button> */}
       </Col>
       </Row>
     </Container>
