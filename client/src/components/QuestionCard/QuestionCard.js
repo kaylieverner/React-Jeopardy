@@ -6,6 +6,7 @@ function QuestionCard(props) {
   <div className="col">
     <div className="card">
       <div className="card-body text-center">
+        {/* <div>{props.question}</div> */}
         <button type="button" class="btn btn-link">{props.level}</button>
       </div>
     </div>

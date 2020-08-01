@@ -1,11 +1,11 @@
 import React from "react";
 
-function CategoryCard() {
+function CategoryCard(props) {
   return (
     <div className="col">
             <div className="card">
                 <div className="card-body text-center">
-                    Category 1
+                  {props.title}
                 </div>
             </div>
         </div>

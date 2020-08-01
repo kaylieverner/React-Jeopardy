@@ -15,14 +15,13 @@ const [fiveHundredQuestions, setFiveHundredQuestions] = useState([]);
 
 useEffect(() => {
     loadCategories()
-    
   }, [])
 
-  useEffect(() => {
-      loadQuestions()
+useEffect(() => {
+    loadQuestions()
   }, [categories])
 
-  useEffect(() => {
+useEffect(() => {
     if(questions.length > 5){
         categories.forEach(()=>{
             setOneHundredQuestions(createScoreCards(0));
@@ -60,11 +59,9 @@ useEffect(() => {
             tempArray.push(categoryQuestion.questions[questionScoreIndex])
         }
     })
-    return tempArray
+    return tempArray;
   }
   
-  
-
   return (
     <div className="boardContainer">
         <div className="row categoryRow">
@@ -74,27 +71,27 @@ useEffect(() => {
         </div>
         <div className="row 200Row">
             {oneHundredQuestions.map((question)=>{
-                return <QuestionCard question={question} level='100'></QuestionCard>
+                return <QuestionCard question={question.question} level='200'></QuestionCard>
             })}
         </div>
-        <div className="row 200Row">
+        <div className="row 400Row">
             {twoHundredQuestions.map((question)=>{
-                return <QuestionCard question={question} level='200'></QuestionCard>
-            })}
-        </div>
-        <div className="row 200Row">
-            {threeHundredQuestions.map((question)=>{
-                return <QuestionCard question={question} level='300'></QuestionCard>
-            })}
-        </div>
-        <div className="row 200Row">
-            {fourHundredQuestions.map((question)=>{
                 return <QuestionCard question={question} level='400'></QuestionCard>
             })}
         </div>
-        <div className="row 200Row">
+        <div className="row 600Row">
+            {threeHundredQuestions.map((question)=>{
+                return <QuestionCard question={question} level='600'></QuestionCard>
+            })}
+        </div>
+        <div className="row 800Row">
+            {fourHundredQuestions.map((question)=>{
+                return <QuestionCard question={question} level='800'></QuestionCard>
+            })}
+        </div>
+        <div className="row 1000Row">
             {fiveHundredQuestions.map((question)=>{
-                return <QuestionCard question={question} level='500'></QuestionCard>
+                return <QuestionCard question={question} level='1000'></QuestionCard>
             })}
         </div>
     </div>
