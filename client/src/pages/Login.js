@@ -14,28 +14,61 @@ import { Box, Button as GrommetButton, FormField, TextInput,Grommet } from 'grom
 function Login() {
 
   return (
-    <Grommet>
+    <Container>
+    {/* <Grommet>
       <Box>
-        <h2>login and sign up</h2>
-        <Box>
+        <h2>login and sign up</h2> */}
+        {/* <Box>
           <FormField label="Login">
             <TextInput placeholder="username" />
             <TextInput placeholder="password" />
           </FormField>
           <GrommetButton color="primary" label='Login' />
-        </Box>
-        <Box>
+        </Box> */}
+        {/* <Box>
           <FormField label="Sign Up">
             <TextInput placeholder="username" />
             <TextInput placeholder="password" />
           </FormField>
           <GrommetButton color="primary" label='Sign Up' />
+        </Box> */}
+      {/* </Box>
+    </Grommet> */}
+      <Row>
+      <Col size="md-6">
+      <Jumbotron>
+          <h>Log In</h>
+          <Grommet>
+          <Box>
+          <FormField label="">
+            <TextInput placeholder="username" />
+            <TextInput placeholder="password" />
+          </FormField>
+          <GrommetButton color="primary" label='Login' />
         </Box>
-      </Box>
-    </Grommet>
+          </Grommet>
+       </Jumbotron>
+      </Col>
 
+      <Col size="md-6">
+      <Jumbotron>
+          <h>Sign Up</h>
+          <Grommet>
+          <Box>
+          <FormField label="">
+            <TextInput placeholder="username" />
+            <TextInput placeholder="password" />
+          </FormField>
+          <GrommetButton color="primary" label='Sign Up' />
+        </Box>
+          </Grommet>
+       </Jumbotron>
+      </Col>
+      </Row>
+    </Container>
   );
 }
 
 
 export default Login;
+
