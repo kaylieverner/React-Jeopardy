@@ -1,18 +1,15 @@
 import React from "react";
+import { defaultProps } from "grommet";
 
-function QuestionCard() {
+function QuestionCard(props) {
   return (
-<div>
-      <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">Category</h5>
-          
-          <p className="card-text">Question</p>
-          <a href="#" className="card-link">Show Answer</a>
-          <a href="#" className="card-link">Next Question</a>
-        </div>
+  <div className="col">
+    <div className="card">
+      <div className="card-body text-center">
+        <button type="button" class="btn btn-link">{props.level}</button>
       </div>
-</div>
+    </div>
+  </div>
   );
 }
 
