@@ -71,7 +71,9 @@ useEffect(() => {
   return (
     <div className="boardContainer">
         <QuestionModal  show={modalShow}
-        onHide={() => setModalShow(false)}></QuestionModal>
+        onHide={() => setModalShow(false)}
+        twoHundredQuestions={twoHundredQuestions}
+        ></QuestionModal>
         <div className="row categoryRow">
             {categories.map((cat)=>{
             return(
@@ -85,22 +87,22 @@ useEffect(() => {
         </div>
         <div className="row 400Row">
             {fourHundredQuestions.map((question)=>{
-                return <QuestionCard question={question} level='400'></QuestionCard>
+                return <QuestionCard question={question} level='400' setModalShow={setModalShow}></QuestionCard>
             })}
         </div>
         <div className="row 600Row">
             {sixHundredQuestions.map((question)=>{
-                return <QuestionCard question={question} level='600'></QuestionCard>
+                return <QuestionCard question={question} level='600' setModalShow={setModalShow}></QuestionCard>
             })}
         </div>
         <div className="row 800Row">
             {eightHundredQuestions.map((question)=>{
-                return <QuestionCard question={question} level='800'></QuestionCard>
+                return <QuestionCard question={question} level='800' setModalShow={setModalShow}></QuestionCard>
             })}
         </div>
         <div className="row 1000Row">
             {thousandQuestions.map((question)=>{
-                return <QuestionCard question={question} level='1000'></QuestionCard>
+                return <QuestionCard question={question} level='1000' setModalShow={setModalShow}></QuestionCard>
             })}
         </div>
     </div>
