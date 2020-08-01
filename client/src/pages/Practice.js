@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Row, Container } from "../components/Grid";
 import { Box, Grommet } from 'grommet';
-import QuestionCard from "../components/QuestionCard/QuestionCard"
+import PracticeCard from "../components/PracticeCard/PracticeCard"
 import { Button } from 'reactstrap';  
 
 //practice game
@@ -13,7 +13,7 @@ import { Button } from 'reactstrap';
        <Row>
         <Col size="md-10"> 
         <Grommet>
-        <Box><QuestionCard> </QuestionCard></Box> 
+        <Box><PracticeCard> </PracticeCard></Box> 
         </Grommet>
         </Col>
        </Row>

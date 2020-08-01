@@ -24,7 +24,7 @@ const styles = {
       },
       
     };
-function QuestionCard() {
+function PracticeCard() {
   return (
 <div>  
       <div className="card" style = {styles.card}>
@@ -39,6 +39,6 @@ function QuestionCard() {
   );
 }
 
-export default QuestionCard;
+export default PracticeCard;
 
 
