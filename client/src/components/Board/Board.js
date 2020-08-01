@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from "react";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import QuestionCard from "../QuestionCard/QuestionCard";
+import QuestionModal from "../QuestionModal/QuestionModal";
 import API from "../../utils/API";
 
 function Board() {
 const [categories, setCategories] = useState([]);
 const [questions, setQuestions] = useState([]);
-const [oneHundredQuestions, setOneHundredQuestions] = useState([]);
+const [modalShow, setModalShow] = useState(false);
 const [twoHundredQuestions, setTwoHundredQuestions] = useState([]);
-const [threeHundredQuestions, setThreeHundredQuestions] = useState([]);
 const [fourHundredQuestions, setFourHundredQuestions] = useState([]);
-const [fiveHundredQuestions, setFiveHundredQuestions] = useState([]);
+const [sixHundredQuestions, setSixHundredQuestions] = useState([]);
+const [eightHundredQuestions, setEightHundredQuestions] = useState([]);
+const [thousandQuestions, setThousandQuestions] = useState([]);
 
 
 useEffect(() => {
@@ -22,17 +24,21 @@ useEffect(() => {
   }, [categories])
 
 useEffect(() => {
-    if(questions.length > 5){
+    if(questions.length > 5 ){
         categories.forEach(()=>{
-            setOneHundredQuestions(createScoreCards(0));
-            setTwoHundredQuestions(createScoreCards(1));
-            setThreeHundredQuestions(createScoreCards(2));
-            setFourHundredQuestions(createScoreCards(3));
-            setFiveHundredQuestions(createScoreCards(4));
+            setTwoHundredQuestions(createScoreCards(0));
+            setFourHundredQuestions(createScoreCards(1));
+            setSixHundredQuestions(createScoreCards(2));
+            setEightHundredQuestions(createScoreCards(3));
+            setThousandQuestions(createScoreCards(4));
         })
         console.log(questions)
     }
 }, [questions])
+
+useEffect(() => {
+    console.log(twoHundredQuestions)
+  }, [twoHundredQuestions])
 
   function loadCategories() {
     API.getCategories()
@@ -64,33 +70,36 @@ useEffect(() => {
   
   return (
     <div className="boardContainer">
+        <QuestionModal  show={modalShow}
+        onHide={() => setModalShow(false)}></QuestionModal>
         <div className="row categoryRow">
             {categories.map((cat)=>{
             return(
             <CategoryCard title={cat.title}></CategoryCard>)})}
         </div>
         <div className="row 200Row">
-            {oneHundredQuestions.map((question)=>{
-                return <QuestionCard question={question.question} level='200'></QuestionCard>
+            {twoHundredQuestions.map((question)=>{
+                return <QuestionCard question={questions.question} level='200' setModalShow={setModalShow}>
+                </QuestionCard>
             })}
         </div>
         <div className="row 400Row">
-            {twoHundredQuestions.map((question)=>{
+            {fourHundredQuestions.map((question)=>{
                 return <QuestionCard question={question} level='400'></QuestionCard>
             })}
         </div>
         <div className="row 600Row">
-            {threeHundredQuestions.map((question)=>{
+            {sixHundredQuestions.map((question)=>{
                 return <QuestionCard question={question} level='600'></QuestionCard>
             })}
         </div>
         <div className="row 800Row">
-            {fourHundredQuestions.map((question)=>{
+            {eightHundredQuestions.map((question)=>{
                 return <QuestionCard question={question} level='800'></QuestionCard>
             })}
         </div>
         <div className="row 1000Row">
-            {fiveHundredQuestions.map((question)=>{
+            {thousandQuestions.map((question)=>{
                 return <QuestionCard question={question} level='1000'></QuestionCard>
             })}
         </div>
