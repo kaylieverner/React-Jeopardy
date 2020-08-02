@@ -7,7 +7,6 @@ import API from "../../utils/API";
 function Board() {
 const [categories, setCategories] = useState([]);
 const [questions, setQuestions] = useState([]);
-const [modalShow, setModalShow] = useState(false);
 const [twoHundredQuestions, setTwoHundredQuestions] = useState([]);
 const [fourHundredQuestions, setFourHundredQuestions] = useState([]);
 const [sixHundredQuestions, setSixHundredQuestions] = useState([]);
@@ -35,10 +34,6 @@ useEffect(() => {
         console.log(questions)
     } 
 }, [questions])
-
-useEffect(() => {
-    console.log(thousandQuestions)
-  }, [thousandQuestions])
 
   //call API to retrieve categories 
   function loadCategories() {
@@ -116,14 +111,7 @@ useEffect(() => {
   
   return (
     <div className="boardContainer">
-        <QuestionModal  show={modalShow}
-        onHide={() => setModalShow(false)}
-        twoHundredQuestions={twoHundredQuestions}
-        fourHundredQuestions={fourHundredQuestions}
-        sixHundredQuestions={sixHundredQuestions}
-        eightHundredQuestions={eightHundredQuestions}
-        thousandQuestions={thousandQuestions}
-        ></QuestionModal>
+        
         <div className="row categoryRow">
             {categories.map((cat)=>{
             return(
@@ -131,28 +119,28 @@ useEffect(() => {
         </div>
         <div className="row 200Row">
             {twoHundredQuestions.map((question)=>{
-                return <QuestionCard question={questions.question} level='200' setModalShow={setModalShow}>
-                </QuestionCard>
+                return <QuestionCard level='200' question={twoHundredQuestions}></QuestionCard>
             })}
         </div>
         <div className="row 400Row">
             {fourHundredQuestions.map((question)=>{
-                return <QuestionCard question={question} level='400' setModalShow={setModalShow}></QuestionCard>
+                return <QuestionCard level='400' question={fourHundredQuestions}
+                ></QuestionCard>
             })}
         </div>
         <div className="row 600Row">
             {sixHundredQuestions.map((question)=>{
-                return <QuestionCard question={question} level='600' setModalShow={setModalShow}></QuestionCard>
+                return <QuestionCard question={sixHundredQuestions} level='600'></QuestionCard>
             })}
         </div>
         <div className="row 800Row">
             {eightHundredQuestions.map((question)=>{
-                return <QuestionCard question={question} level='800' setModalShow={setModalShow}></QuestionCard>
+                return <QuestionCard question={eightHundredQuestions} level='800' ></QuestionCard>
             })}
         </div>
         <div className="row 1000Row">
             {thousandQuestions.map((question)=>{
-                return <QuestionCard question={question} level='1000' setModalShow={setModalShow}></QuestionCard>
+                return <QuestionCard question={thousandQuestions} level='1000' ></QuestionCard>
             })}
         </div>
     </div>

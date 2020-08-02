@@ -2,10 +2,8 @@ import React from "react";
 import { Button, Modal } from 'react-bootstrap';
 
 function QuestionModal(props) {
-  console.log(props.twoHundredQuestions)
+  console.log(props)
   
-  
-
     return (
       <Modal
       {...props}
@@ -15,7 +13,7 @@ function QuestionModal(props) {
     >
       <Modal.Header closeButton>
       <Modal.Title id="contained-modal-title-vcenter">
-          {props.twoHundredQuestions[0] && props.twoHundredQuestions[0].question}
+          {/* {props.twoHundredQuestions[0] && props.twoHundredQuestions[0].question} */}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
