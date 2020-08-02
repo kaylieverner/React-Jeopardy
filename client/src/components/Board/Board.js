@@ -23,7 +23,9 @@ useEffect(() => {
   }, [categories])
 
 useEffect(() => {
-    if(questions.length > 5){
+    console.log("line 26")
+    console.log(questions)
+    if(questions[0] && questions[0].questions.length >= 5){
         categories.forEach(()=>{
             setTwoHundredQuestions(createScoreCards(0));
             setFourHundredQuestions(createScoreCards(1));
@@ -50,8 +52,8 @@ useEffect(() => {
         console.log(`${category.id} ${index} ${typeof index}`);
         API.getQuestions(category.id)
         .then(res => {
-            setQuestions([...questions, questions.push({id:category.id, questions: res.data.clues})]);
-        })  
+            setQuestions(previousState => [...previousState, {id:category.id, questions: res.data.clues}]);
+        })
     })
   };
 
@@ -65,49 +67,6 @@ useEffect(() => {
     })
     return tempArray;
   }
-
-  //after user clicks on a card, determine which state to pull from
-//   function determineQuestionVal() {
-//     switch(level) {
-//       case "200": 
-//         <QuestionModal  show={modalShow}
-//         onHide={() => setModalShow(false)}
-//         twoHundredQuestions={twoHundredQuestions}
-//         ></QuestionModal>
-//         break;
-//       case "400": 
-//         <QuestionModal  show={modalShow}
-//         onHide={() => setModalShow(false)}
-//         fourHundredQuestions={fourHundredQuestions}
-//         ></QuestionModal>
-//         break;
-//       case "600": 
-//         <QuestionModal  show={modalShow}
-//         onHide={() => setModalShow(false)}
-//         sixHundredQuestions={sixHundredQuestions}
-//         ></QuestionModal>
-//         break;
-//       case "800": 
-//         <QuestionModal  show={modalShow}
-//         onHide={() => setModalShow(false)}
-//         eightHundredQuestions={eightHundredQuestions}
-//         ></QuestionModal>
-//         break;
-//       case "1000": 
-//         <QuestionModal  show={modalShow}
-//         onHide={() => setModalShow(false)}
-//         thousandQuestions={thousandQuestions}
-//         ></QuestionModal>
-//         break;
-//       default: 
-//         something
-//     }
-//   };
-
-//   //conditional rendering to detmerine which specific question within the state to show 
-//   function determineSpecificQuestion() {
-
-//   };
   
   return (
     <div className="boardContainer">
