@@ -72,7 +72,7 @@ useEffect(() => {
     <div className="boardContainer">
         <QuestionModal  show={modalShow}
         onHide={() => setModalShow(false)}
-        twoHundredQuestions={twoHundredQuestions}
+        twoHundredQuestions={twoHundredQuestions[0]}
         ></QuestionModal>
         <div className="row categoryRow">
             {categories.map((cat)=>{

@@ -11,8 +11,8 @@ function QuestionModal(props) {
       centered
     >
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
-          Modal heading
+      <Modal.Title id="contained-modal-title-vcenter">
+          {props.twoHundredQuestions && props.twoHundredQuestions.question}
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
