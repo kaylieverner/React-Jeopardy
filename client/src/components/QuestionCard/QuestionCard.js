@@ -6,52 +6,12 @@ const [modalShow, setModalShow] = useState(false);
 
   function showModal(props){
     console.log(props, 'In show modal props');
-    setModalShow(true)
+    setModalShow(true);
   }
 
-
-  //after user clicks on a card, determine which state to pull from
-//  function determineQuestionVal() {
-//     switch(level) {
-//       case "200": 
-//         <QuestionModal  show={modalShow}
-//         onHide={() => setModalShow(false)}
-//         twoHundredQuestions={twoHundredQuestions}
-//         ></QuestionModal>
-//         break;
-//       case "400": 
-//         <QuestionModal  show={modalShow}
-//         onHide={() => setModalShow(false)}
-//         fourHundredQuestions={fourHundredQuestions}
-//         ></QuestionModal>
-//         break;
-//       case "600": 
-//         <QuestionModal  show={modalShow}
-//         onHide={() => setModalShow(false)}
-//         sixHundredQuestions={sixHundredQuestions}
-//         ></QuestionModal>
-//         break;
-//       case "800": 
-//         <QuestionModal  show={modalShow}
-//         onHide={() => setModalShow(false)}
-//         eightHundredQuestions={eightHundredQuestions}
-//         ></QuestionModal>
-//         break;
-//       case "1000": 
-//         <QuestionModal  show={modalShow}
-//         onHide={() => setModalShow(false)}
-//         thousandQuestions={thousandQuestions}
-//         ></QuestionModal>
-//         break;
-//       default: 
-//         something
-//     }
-//   };
-
-//   //conditional rendering to detmerine which specific question within the state to show 
-//   function determineSpecificQuestion() {
-
-//   };
+  function disableBtn() {
+    document.getElementById("answerBtn").classList.add("disabled");
+  }
 
   return (
       <div className="col" >
@@ -62,6 +22,7 @@ const [modalShow, setModalShow] = useState(false);
         <div className="card">
           <div className="card-body text-center" id={props.categoryID} index={props.index}>
             <button 
+              id="answerBtn"
               type="button" 
               className="btn btn-link" 
               onClick={() => showModal(props)}>

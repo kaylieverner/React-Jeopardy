@@ -1,8 +1,13 @@
 import React from "react";
 import { Button, Modal } from 'react-bootstrap';
+import './style.css'
 
 function QuestionModal(props) {
-  // console.log(props.props)
+  
+    function showAnswer() {
+      document.getElementById("answer").classList.remove("hidden");
+    }
+
     return (
       <Modal
       {...props}
@@ -16,12 +21,12 @@ function QuestionModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h4>Centered Modal</h4>
-        <p>
-          Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-          dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-          consectetur ac, vestibulum at eros.
-        </p>
+        <div className="answerContainer">
+          <div className="answerDiv hidden m-3" id="answer">
+          {props.props && props.props.question[props.props.index].answer}
+          </div>
+          <Button onClick={showAnswer}>Show Answer</Button>
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
