@@ -1,0 +1,11 @@
+.answerDiv {
+    font-size: 35px;
+}
+
+.hidden {
+    display: none;
+}
+
+.answerContainer {
+    text-align: center;
+}

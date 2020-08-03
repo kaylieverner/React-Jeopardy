@@ -2,8 +2,8 @@ import React from "react";
 
 function Container({children}) {
   return (
-<div class="card">
-    <div class="card-body ">
+<div className="card">
+    <div className="card-body ">
         {children}
     </div>
 </div>
