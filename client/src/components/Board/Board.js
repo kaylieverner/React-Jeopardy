@@ -69,7 +69,6 @@ useEffect(() => {
     return tempArray;
   }
 
- 
   
   return (
     <div className="boardContainer">

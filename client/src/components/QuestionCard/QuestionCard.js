@@ -9,6 +9,8 @@ const [modalShow, setModalShow] = useState(false);
     setModalShow(true);
   }
 
+
+  //needs to be updated to disable link after being clicked
   function disableBtn() {
     document.getElementById("answerBtn").classList.add("disabled");
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import {Box, DropButton, Select, Table, TableHeader, TableRow, TableCell, TableBody, TextInput} from 'grommet';
+import {Box} from 'grommet';
 import Container from "../components/Container/Container";
 import PlayerScore from "../components/PlayerScore/PlayerScore";
 import Board from "../components/Board/Board";
