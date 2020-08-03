@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import QuestionCard from "../QuestionCard/QuestionCard";
-import QuestionModal from "../QuestionModal/QuestionModal";
 import API from "../../utils/API";
 
 function Board() {
@@ -23,8 +22,6 @@ useEffect(() => {
   }, [categories])
 
 useEffect(() => {
-    console.log("line 26")
-    console.log(questions)
     if(questions[0] && questions[0].questions.length >= 5){
         categories.forEach(()=>{
             setTwoHundredQuestions(createScoreCards(0));
@@ -36,6 +33,10 @@ useEffect(() => {
         console.log(questions)
     } 
 }, [questions])
+
+useEffect(() => {
+    console.log(fourHundredQuestions)
+  }, [fourHundredQuestions])
 
   //call API to retrieve categories 
   function loadCategories() {
@@ -74,32 +75,32 @@ useEffect(() => {
         <div className="row categoryRow">
             {categories.map((cat)=>{
             return(
-            <CategoryCard title={cat.title}></CategoryCard>)})}
+            <CategoryCard title={cat.title} key={cat.id}></CategoryCard>)})}
         </div>
         <div className="row 200Row">
             {twoHundredQuestions.map((question)=>{
-                return <QuestionCard level='200' question={twoHundredQuestions}></QuestionCard>
+                return <QuestionCard level='200' question={twoHundredQuestions} categoryID={question.category_id} index={twoHundredQuestions.indexOf(question)}></QuestionCard>
             })}
         </div>
         <div className="row 400Row">
             {fourHundredQuestions.map((question)=>{
                 return <QuestionCard level='400' question={fourHundredQuestions}
-                ></QuestionCard>
+                categoryID={question.category_id} index={fourHundredQuestions.indexOf(question)}></QuestionCard>
             })}
         </div>
         <div className="row 600Row">
             {sixHundredQuestions.map((question)=>{
-                return <QuestionCard question={sixHundredQuestions} level='600'></QuestionCard>
+                return <QuestionCard level='600' question={sixHundredQuestions} categoryID={question.category_id} index={sixHundredQuestions.indexOf(question)}></QuestionCard>
             })}
         </div>
         <div className="row 800Row">
             {eightHundredQuestions.map((question)=>{
-                return <QuestionCard question={eightHundredQuestions} level='800' ></QuestionCard>
+                return <QuestionCard level='800' question={eightHundredQuestions} categoryID={question.category_id} index={eightHundredQuestions.indexOf(question)}></QuestionCard>
             })}
         </div>
         <div className="row 1000Row">
             {thousandQuestions.map((question)=>{
-                return <QuestionCard question={thousandQuestions} level='1000' ></QuestionCard>
+                return <QuestionCard level='1000' question={thousandQuestions} categoryID={question.category_id} index={thousandQuestions.indexOf(question)}></QuestionCard>
             })}
         </div>
     </div>
@@ -107,13 +108,3 @@ useEffect(() => {
 }
 
 export default Board;
-
-// const [modalShow, setModalShow] = useState(false);
-    //API calls to get questions/answers/categories
-    //push all categories into an array
-    //render our categories by mapping over this array 
-    // const categories = ["cat 1,", "cat2"];
-
-    //once api requests are done to get questions for each category
-    //assign answers into an array of objects -per category
-    //render our 'answer' cards with hard coded values, and the question text by mapping over each of those arrays
