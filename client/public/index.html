@@ -13,7 +13,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/journal/bootstrap.min.css"
     />
-    <title>React Reading List</title>
+    <title>Jeporady
+      
+    </title>
   </head>
 
   <body>
@@ -23,17 +25,5 @@
     <div id="root"></div>
   </body>
 
-  <script>
-    const req = new XMLHttpRequest();
-    req.onreadystatechange = function () {
-      if (req.readyState == 4 && req.status == 200) {
-        const user = JSON.parse(req.response).user;
-        document.getElementById(
-          "welcome-message"
-        ).innerText = `Welcome ${user.username}!!`;
-      }
-    };
-    req.open("GET", "http://localhost:3000/user", true);
-    req.send();
-  </script>
+  
 </html>

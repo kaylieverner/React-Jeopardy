@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API from '../utils/API'
+import API from "../utils/API";
 class loginForm extends Component {
   // Setting the component's initial state
   state = {
@@ -10,7 +10,7 @@ class loginForm extends Component {
   handleInputChange = (event) => {
     // Getting the value and name of the input which triggered the change
     const { info, value } = event.target;
-
+    console.log(event);
     // Updating the input's state
     this.setState({
       [info]: value,
@@ -28,7 +28,7 @@ class loginForm extends Component {
         password: password,
       })
         .then(function () {
-          window.location.replace("/app");
+          window.location.replace("/play");
           // If there's an error, log the error
         })
         .catch(function (err) {
