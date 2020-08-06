@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import API from "../../utils/API";
@@ -11,7 +11,6 @@ const [fourHundredQuestions, setFourHundredQuestions] = useState([]);
 const [sixHundredQuestions, setSixHundredQuestions] = useState([]);
 const [eightHundredQuestions, setEightHundredQuestions] = useState([]);
 const [thousandQuestions, setThousandQuestions] = useState([]);
-
 
 useEffect(() => {
     loadCategories()
@@ -69,6 +68,7 @@ useEffect(() => {
     return tempArray;
   }
 
+  
   
   return (
     <div className="boardContainer">

@@ -9,11 +9,11 @@ const [modalShow, setModalShow] = useState(false);
     setModalShow(true);
   }
 
+  // //needs to be updated to disable link after being clicked
+  // function disableBtn(props) {
+  //   document.getElementById(props.categoryID).classList.add("disabled");
+  // }
 
-  //needs to be updated to disable link after being clicked
-  function disableBtn() {
-    document.getElementById("answerBtn").classList.add("disabled");
-  }
 
   return (
       <div className="col" >
@@ -27,7 +27,8 @@ const [modalShow, setModalShow] = useState(false);
               id="answerBtn"
               type="button" 
               className="btn btn-link" 
-              onClick={() => showModal(props)}>
+              onClick={() => showModal(props)}
+              >
               {props.level}
             </button>
           </div>
