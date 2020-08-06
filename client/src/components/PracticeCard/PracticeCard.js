@@ -24,15 +24,17 @@ const styles = {
       },
       
     };
-function PracticeCard() {
+function PracticeCard(props) {
+  console.log(props.randomQuestion)
   return (
 <div>  
       <div className="card" style = {styles.card}>
         <div className="card-body" style = {styles.heading}>Practice Questions!</div>
-          <h5 className="card-title" style = {styles.title}>Category</h5>
-          <p className="card-text" style = {styles.content}>Question</p>
-          {/* <div> <button type="button" className="button">Show Answer</button> </div>
-          <div> <button type="button" className="button">Next Question</button></div> */}
+          <h5 className="card-title" style = {styles.title}>Category: {props.randomQuestion && props.randomQuestion.category.title}</h5>
+          <p className="card-text" style = {styles.content}>Value: {props.randomQuestion && props.randomQuestion.value}</p>
+          <p className="card-text" style = {styles.content}>Question: {props.randomQuestion && props.randomQuestion.question}</p>
+
+          <p className="answer hidden" style = {styles.content} id="practiceAnswer">Answer: {props.randomQuestion && props.randomQuestion.answer}</p>
         </div>
       </div>
 
