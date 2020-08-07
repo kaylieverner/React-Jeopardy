@@ -11,43 +11,40 @@ import { Button } from 'react-bootstrap';
 // Save scores to DB 
 
 function Play() {
+const [playersScores, setPlayersScores] = useState([]);
 
-  const [numOfPlayers, setNumOfPlayers] = useState("0");
-  const [playersScores, setPlayersScores] = useState([
-    {name: "player1", score: 0}, {name: "", score: 0}, {name: "", score: 0}, {name: "", score: 0}
-  ]);
+function players(count) {
+  const player = { name: '', score:0 };
+  const newPlayerScores = [];
 
 
-function players(event) {
-  console.log("clicked")
-  setNumOfPlayers(event.target.id)
-  console.log(numOfPlayers)
+  for(let i = 0; i < count; i++) {
+    newPlayerScores.push(player)
+  }
+
+  setPlayersScores([...newPlayerScores])
 }
 
-function renderPlayerCards(){
-  if (numOfPlayers === "1") {
-    return <Box direction="row-responsive" gap="small"><PlayerScore playersScores={playersScores}/></Box>
-  } else if (numOfPlayers === "2") {
-    return <Box direction="row-responsive" gap="small"><PlayerScore/><PlayerScore/></Box>
-  } else if (numOfPlayers === "3") {
-    return <Box direction="row-responsive" gap="small"><PlayerScore/><PlayerScore/><PlayerScore/></Box>
-  } else if (numOfPlayers === "4") {
-    return <Box direction="row-responsive" gap="small"><PlayerScore/><PlayerScore/><PlayerScore/><PlayerScore/></Box>
-  } else {
-    return <p>Select Number of Players</p>;
-  }
-};
+function updateName(name, index) {
+  const newPlayerScores = playersScores;
+
+  newPlayerScores[index].name = name;
   
+  setPlayersScores([...newPlayerScores])
+}
+  
+  const playerCounts = [1, 2, 3, 4];
   return (
     <div className="container mt-4">
       <div className="row">
         <div className="col">
           <Container>
             <h3>Choose the Number of Players</h3>
-            <Button color="primary" className="onePlayers" id="1" onClick={players}>1</Button>
-            <Button color="primary" className="twoPlayers" id="2" onClick={players}>2</Button>
-            <Button color="primary" className="threePlayers" id="3" onClick={players}>3</Button>
-            <Button color="primary" className="fourPlayers" id="4" onClick={players}>4</Button>
+            {playerCounts.map(number => (
+              <Button key={String(number)} onClick={() => players(number)}>
+                {number}
+              </Button>
+            ))}
           </Container>
         </div>
       </div>
@@ -55,7 +52,11 @@ function renderPlayerCards(){
         <div className="col">
         <Container>
             <h1 className="mb-2">Scores</h1>
-            {renderPlayerCards()}
+            <Box direction="row-responsive" gap="small">
+              {playersScores.map((player, index) => {
+                return <PlayerScore player={playersScores} updateName={updateName} index={index} />
+              })}
+            </Box>
           </Container>
         </div>
       </div>
@@ -63,7 +64,7 @@ function renderPlayerCards(){
         <div className="col mt-5">
           <Container>
             <div className="boardDiv">
-              <Board numOfPlayers={numOfPlayers} playersScores={playersScores}/>
+              <Board playersScores={playersScores}/>
             </div>
           </Container>
         </div>

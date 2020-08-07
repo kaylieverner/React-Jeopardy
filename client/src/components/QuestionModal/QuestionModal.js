@@ -3,24 +3,9 @@ import { Button, Modal } from 'react-bootstrap';
 import './style.css'
 
 function QuestionModal(props) {
-  console.log(props.props.numOfPlayers)
+  console.log(props.props.playersScores)
     function showAnswer() {
       document.getElementById("answer").classList.remove("hidden");
-    }
-
-    function populatePlayerBtns() {
-      if (props.props.numOfPlayers === "1") {
-        return <div><Button>{props.props.playersScores[0].name}</Button> <Button>None</Button></div>
-      }
-      if (props.props.numOfPlayers === "2") {
-        return <div><Button>{props.props.playersScores[0].name}</Button> <Button>{props.props.playersScores[1].name}</Button> <Button>None</Button></div>
-      }
-      if (props.props.numOfPlayers === "3") {
-        return <div><Button>{props.props.playersScores[0].name}</Button> <Button>{props.props.playersScores[1].name}</Button> <Button>{props.props.playersScores[2].name} </Button> <Button>None</Button></div>
-      }
-      if (props.props.numOfPlayers === "4") {
-        return <div><Button>{props.props.playersScores[0].name}</Button> <Button>{props.props.playersScores[1].name}</Button> <Button>{props.props.playersScores[2].name} </Button> <Button>{props.props.playersScores[3].name}</Button> <Button>None</Button></div>
-      }
     }
 
     function updatePlayerScore() {
@@ -47,7 +32,9 @@ function QuestionModal(props) {
           </div>
           <div className="row">
           <p>Assign points to:</p>
-            {populatePlayerBtns()}
+          {props.props.playersScores.map((player, index) => {
+                return <Button>{props.props.playersScores[index].name}</Button>
+              })}
           </div>
         </div>
       </Modal.Body>

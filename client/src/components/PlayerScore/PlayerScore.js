@@ -5,10 +5,12 @@ function PlayerScore(props) {
   return (
     <div>
         <Box direction="row-responsive" gap="small">
-            <TextInput placeholder="Name"/>
+            <TextInput placeholder="Name" onChange={event => {
+              props.updateName(event.target.value, props.index)
+            }}/>
         </Box>
         <Box direction="row-responsive" gap="small">
-            <Heading margin="large">{props.playersScores[0].score}</Heading>
+            <Heading margin="large">score</Heading>
         </Box>
     </div>
   );
