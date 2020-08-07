@@ -10,7 +10,8 @@ const [modalShow, setModalShow] = useState(false);
     disableLink(props.categoryID)
   }
   
-  function disableLink(props) {
+  function disableLink(id) {
+    console.log(props.categoryID);
     document.getElementById(props.categoryID).classList.add("disabled")
   }
 
@@ -21,7 +22,7 @@ const [modalShow, setModalShow] = useState(false);
           props={props}
         ></QuestionModal>
         <div className="card">
-          <div className="card-body text-center" value={props.level} id={props.categoryID} index={props.index}>
+          <div className="card-body text-center" value={props.level} catID={props.categoryID} index={props.index}>
             <button 
               id={props.categoryID}
               type="button" 
