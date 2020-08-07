@@ -5,12 +5,10 @@ import PlayerScore from "../components/PlayerScore/PlayerScore";
 import Board from "../components/Board/Board";
 import { Button } from 'react-bootstrap';
 
-
 // set up game board 
 // API calls to get questions/answers/categories
 // Player scores
 // Save scores to DB 
-
 
 function Play() {
 const [numOfPlayers, setNumOfPlayers] = useState("0");
@@ -23,19 +21,18 @@ function players(event) {
 
 function renderPlayerCards(){
   if (numOfPlayers === "1") {
-    return <PlayerScore></PlayerScore>;
+    return <Box direction="row-responsive" gap="small"><PlayerScore/></Box>
   } else if (numOfPlayers === "2") {
-    return <div><PlayerScore></PlayerScore><PlayerScore></PlayerScore></div>;
+    return <Box direction="row-responsive" gap="small"><PlayerScore/><PlayerScore/></Box>
   } else if (numOfPlayers === "3") {
-    return <div><PlayerScore></PlayerScore><PlayerScore></PlayerScore><PlayerScore></PlayerScore></div>;
+    return <Box direction="row-responsive" gap="small"><PlayerScore/><PlayerScore/><PlayerScore/></Box>
   } else if (numOfPlayers === "4") {
-    return <div><PlayerScore></PlayerScore><PlayerScore></PlayerScore><PlayerScore></PlayerScore><PlayerScore></PlayerScore></div>;
+    return <Box direction="row-responsive" gap="small"><PlayerScore/><PlayerScore/><PlayerScore/><PlayerScore/></Box>
   } else {
     return <p>Select Number of Players</p>;
   }
 };
   
-
   return (
     <div className="container mt-4">
       <div className="row">
@@ -47,15 +44,16 @@ function renderPlayerCards(){
             <Button color="primary" className="threePlayers" id="3" onClick={players}>3</Button>
             <Button color="primary" className="fourPlayers" id="4" onClick={players}>4</Button>
           </Container>
-          <Container>
-          <h1 className="mb-2">Scores</h1>
-            <Box direction="row-responsive" gap="small">
-              {renderPlayerCards()}
-            </Box>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col">
+        <Container>
+            <h1 className="mb-2">Scores</h1>
+            {renderPlayerCards()}
           </Container>
         </div>
       </div>
-
       <div className="row">
         <div className="col mt-5">
           <Container>
