@@ -11,7 +11,12 @@ import { Button } from 'react-bootstrap';
 // Save scores to DB 
 
 function Play() {
-const [numOfPlayers, setNumOfPlayers] = useState("0");
+
+  const [numOfPlayers, setNumOfPlayers] = useState("0");
+  const [playersScores, setPlayersScores] = useState([
+    {name: "player1", score: 0}, {name: "", score: 0}, {name: "", score: 0}, {name: "", score: 0}
+  ]);
+
 
 function players(event) {
   console.log("clicked")
@@ -21,7 +26,7 @@ function players(event) {
 
 function renderPlayerCards(){
   if (numOfPlayers === "1") {
-    return <Box direction="row-responsive" gap="small"><PlayerScore/></Box>
+    return <Box direction="row-responsive" gap="small"><PlayerScore playersScores={playersScores}/></Box>
   } else if (numOfPlayers === "2") {
     return <Box direction="row-responsive" gap="small"><PlayerScore/><PlayerScore/></Box>
   } else if (numOfPlayers === "3") {
@@ -58,13 +63,12 @@ function renderPlayerCards(){
         <div className="col mt-5">
           <Container>
             <div className="boardDiv">
-              <Board/>
+              <Board numOfPlayers={numOfPlayers} playersScores={playersScores}/>
             </div>
           </Container>
         </div>
       </div>
       </div>
-
   );
 }
 

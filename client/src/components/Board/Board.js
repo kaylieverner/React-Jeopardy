@@ -3,7 +3,8 @@ import CategoryCard from "../CategoryCard/CategoryCard";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import API from "../../utils/API";
 
-function Board() {
+
+function Board(props) {
 const [categories, setCategories] = useState([]);
 const [questions, setQuestions] = useState([]);
 const [twoHundredQuestions, setTwoHundredQuestions] = useState([]);
@@ -71,8 +72,8 @@ useEffect(() => {
   
   
   return (
+      
     <div className="boardContainer">
-        
         <div className="row categoryRow">
             {categories.map((cat)=>{
             return(
@@ -80,7 +81,7 @@ useEffect(() => {
         </div>
         <div className="row 200Row">
             {twoHundredQuestions.map((question)=>{
-                return <QuestionCard level='200' question={twoHundredQuestions} categoryID={question.category_id} index={twoHundredQuestions.indexOf(question)}></QuestionCard>
+                return <QuestionCard level='200' question={twoHundredQuestions} categoryID={question.category_id} index={twoHundredQuestions.indexOf(question)} numOfPlayers={props.numOfPlayers} playersScores={props.playersScores}></QuestionCard>
             })}
         </div>
         <div className="row 400Row">

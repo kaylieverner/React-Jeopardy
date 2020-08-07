@@ -8,7 +8,7 @@ function PlayerScore(props) {
             <TextInput placeholder="Name"/>
         </Box>
         <Box direction="row-responsive" gap="small">
-            <Heading margin="large">100</Heading>
+            <Heading margin="large">{props.playersScores[0].score}</Heading>
         </Box>
     </div>
   );
