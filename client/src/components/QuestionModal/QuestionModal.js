@@ -38,7 +38,7 @@ function QuestionModal(props) {
           <div className="row">
           <p>Assign points to:</p>
           {props.props.playersScores.map((player, index) => {
-                return <Button className="m-2" onClick={() => addPoints(this.id)} id={index}>{props.props.playersScores[index].name}</Button>
+                return <Button className="m-2" onClick={() => addPoints(index)} id={index}>{props.props.playersScores[index].name}</Button>
               })}
               <Button className="m-2">None</Button>
           </div>
