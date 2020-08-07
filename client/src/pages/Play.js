@@ -13,12 +13,27 @@ import { Button } from 'react-bootstrap';
 
 
 function Play() {
-const [numOfPlayers, setNumOfPlayers] = useState(0);
-const playerBtn = document.getElementById("playerBtn");
+const [numOfPlayers, setNumOfPlayers] = useState("0");
 
-function players() {
-  console.log(playerBtn.getAttribute("id"))
+function players(event) {
+  console.log("clicked")
+  setNumOfPlayers(event.target.id)
+  console.log(numOfPlayers)
 }
+
+function renderPlayerCards(){
+  if (numOfPlayers === "1") {
+    return <PlayerScore></PlayerScore>;
+  } else if (numOfPlayers === "2") {
+    return <div><PlayerScore></PlayerScore><PlayerScore></PlayerScore></div>;
+  } else if (numOfPlayers === "3") {
+    return <div><PlayerScore></PlayerScore><PlayerScore></PlayerScore><PlayerScore></PlayerScore></div>;
+  } else if (numOfPlayers === "4") {
+    return <div><PlayerScore></PlayerScore><PlayerScore></PlayerScore><PlayerScore></PlayerScore><PlayerScore></PlayerScore></div>;
+  } else {
+    return <p>Select Number of Players</p>;
+  }
+};
   
 
   return (
@@ -27,15 +42,15 @@ function players() {
         <div className="col">
           <Container>
             <h3>Choose the Number of Players</h3>
-            <Button color="primary" className="onePlayers" id="btn1" onClick={players()}>1</Button>
-            <Button color="primary" className="twoPlayers" id="playerBtn" onClick={players()}>2</Button>
-            <Button color="primary" className="threePlayers" id="playerBtn" onClick={players()}>3</Button>
-            <Button color="primary" className="fourPlayers" id="playerBtn" onClick={players()}>4</Button>
+            <Button color="primary" className="onePlayers" id="1" onClick={players}>1</Button>
+            <Button color="primary" className="twoPlayers" id="2" onClick={players}>2</Button>
+            <Button color="primary" className="threePlayers" id="3" onClick={players}>3</Button>
+            <Button color="primary" className="fourPlayers" id="4" onClick={players}>4</Button>
           </Container>
           <Container>
           <h1 className="mb-2">Scores</h1>
             <Box direction="row-responsive" gap="small">
-              
+              {renderPlayerCards()}
             </Box>
           </Container>
         </div>
