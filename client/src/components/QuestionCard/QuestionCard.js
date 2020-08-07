@@ -3,16 +3,12 @@ import QuestionModal from "../QuestionModal/QuestionModal";
 
 function QuestionCard(props) {
 const [modalShow, setModalShow] = useState(false);
+const [disableLink, setDisableLink] = useState(false);
 
   function showModal(props){
     // console.log(props, 'In show modal props');
     setModalShow(true);
-    disableLink(props.categoryID)
-  }
-  
-  function disableLink(id) {
-    console.log(props.categoryID);
-    document.getElementById(props.categoryID).classList.add("disabled")
+    setDisableLink(true)
   }
 
   return (
@@ -27,6 +23,7 @@ const [modalShow, setModalShow] = useState(false);
               id={props.categoryID}
               type="button" 
               className="btn btn-link" 
+              disabled={disableLink}
               onClick={() => showModal(props)}
               >
               {props.level}
