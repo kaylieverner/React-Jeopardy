@@ -12,13 +12,13 @@ import { Button } from 'react-bootstrap';
 
 function Play() {
 const [playersScores, setPlayersScores] = useState([]);
+const playerCounts = [1, 2, 3, 4];
 
 function players(count) {
-  const player = { name: '', score:0 };
   const newPlayerScores = [];
-
-
+  
   for(let i = 0; i < count; i++) {
+    const player = { name: '', score: 0 };
     newPlayerScores.push(player)
   }
 
@@ -29,11 +29,23 @@ function updateName(name, index) {
   const newPlayerScores = playersScores;
 
   newPlayerScores[index].name = name;
-  
   setPlayersScores([...newPlayerScores])
 }
+
+// function scores() {
+//   const newPlayerScores = [];
+
+//   for(let)
+// }
+
+// function updateScore(score, index) {
+//   const newPlayerScores = playersScores;
+//   //current score + value 
+
+//   newPlayerScores[index].score = score;
+//   setPlayersScores([...newPlayerScores])
+// }
   
-  const playerCounts = [1, 2, 3, 4];
   return (
     <div className="container mt-4">
       <div className="row">
@@ -64,7 +76,7 @@ function updateName(name, index) {
         <div className="col mt-5">
           <Container>
             <div className="boardDiv">
-              <Board playersScores={playersScores}/>
+              <Board playersScores={playersScores} />
             </div>
           </Container>
         </div>

@@ -2,6 +2,8 @@ import React from "react";
 import {Box, TextInput, Heading} from 'grommet';
 
 function PlayerScore(props) {
+  console.log(props);
+
   return (
     <div>
         <Box direction="row-responsive" gap="small">
@@ -10,7 +12,7 @@ function PlayerScore(props) {
             }}/>
         </Box>
         <Box direction="row-responsive" gap="small">
-            <Heading margin="large">score</Heading>
+            <Heading margin="large">{props.player[props.index].score}</Heading>
         </Box>
     </div>
   );

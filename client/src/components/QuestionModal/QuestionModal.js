@@ -3,13 +3,9 @@ import { Button, Modal } from 'react-bootstrap';
 import './style.css'
 
 function QuestionModal(props) {
-  console.log(props.props.playersScores)
+  // console.log(props.props.playersScores)
     function showAnswer() {
       document.getElementById("answer").classList.remove("hidden");
-    }
-
-    function updatePlayerScore() {
-      //set the playersScores state to the updated score 
     }
 
     return (
@@ -33,8 +29,9 @@ function QuestionModal(props) {
           <div className="row">
           <p>Assign points to:</p>
           {props.props.playersScores.map((player, index) => {
-                return <Button>{props.props.playersScores[index].name}</Button>
+                return <Button className="m-2" onClick={props.props.updateScore}>{props.props.playersScores[index].name}</Button>
               })}
+              <Button className="m-2">None</Button>
           </div>
         </div>
       </Modal.Body>

@@ -22,7 +22,7 @@ const [modalShow, setModalShow] = useState(false);
           props={props}
         ></QuestionModal>
         <div className="card">
-          <div className="card-body text-center" id={props.categoryID} index={props.index}>
+          <div className="card-body text-center" value={props.level} id={props.categoryID} index={props.index}>
             <button 
               id="answerBtn"
               type="button" 
