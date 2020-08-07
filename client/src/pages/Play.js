@@ -5,11 +5,6 @@ import PlayerScore from "../components/PlayerScore/PlayerScore";
 import Board from "../components/Board/Board";
 import { Button } from 'react-bootstrap';
 
-// set up game board 
-// API calls to get questions/answers/categories
-// Player scores
-// Save scores to DB 
-
 function Play() {
 const [playersScores, setPlayersScores] = useState([]);
 const playerCounts = [1, 2, 3, 4];
@@ -47,7 +42,7 @@ function updateScore(score, index) {
           <Container>
             <h3>Choose the Number of Players</h3>
             {playerCounts.map(number => (
-              <Button key={String(number)} onClick={() => players(number)}>
+              <Button className="m-2" key={String(number)} onClick={() => players(number)}>
                 {number}
               </Button>
             ))}

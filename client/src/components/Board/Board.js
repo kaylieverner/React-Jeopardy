@@ -71,6 +71,7 @@ useEffect(() => {
 
   
   
+  
   return (
       
     <div className="boardContainer">
@@ -81,7 +82,7 @@ useEffect(() => {
         </div>
         <div className="row 200Row">
             {twoHundredQuestions.map((question)=>{
-                return <QuestionCard level='200' question={twoHundredQuestions} categoryID={question.category_id} index={twoHundredQuestions.indexOf(question)}  playersScores={props.playersScores} updateScore={props.updateScore} ></QuestionCard>
+                return <QuestionCard level='200' question={twoHundredQuestions} categoryID={question.category_id} index={twoHundredQuestions.indexOf(question)}  playersScores={props.playersScores} updateScore={props.updateScore}></QuestionCard>
             })}
         </div>
         <div className="row 400Row">

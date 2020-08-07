@@ -7,13 +7,12 @@ const [modalShow, setModalShow] = useState(false);
   function showModal(props){
     // console.log(props, 'In show modal props');
     setModalShow(true);
+    disableLink()
   }
-
-  // //needs to be updated to disable link after being clicked
-  // function disableBtn(props) {
-  //   document.getElementById(props.categoryID).classList.add("disabled");
-  // }
-
+  
+  function disableLink() {
+    document.getElementById("cardBtn").classList.add("disabled")
+  }
 
   return (
       <div className="col" >
@@ -24,7 +23,7 @@ const [modalShow, setModalShow] = useState(false);
         <div className="card">
           <div className="card-body text-center" value={props.level} id={props.categoryID} index={props.index}>
             <button 
-              id="answerBtn"
+              id="cardBtn"
               type="button" 
               className="btn btn-link" 
               onClick={() => showModal(props)}
