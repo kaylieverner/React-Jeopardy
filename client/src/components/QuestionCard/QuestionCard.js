@@ -5,7 +5,7 @@ function QuestionCard(props) {
 const [modalShow, setModalShow] = useState(false);
 
   function showModal(props){
-    console.log(props, 'In show modal props');
+    // console.log(props, 'In show modal props');
     setModalShow(true);
   }
 

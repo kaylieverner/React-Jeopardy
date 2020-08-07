@@ -32,19 +32,13 @@ function updateName(name, index) {
   setPlayersScores([...newPlayerScores])
 }
 
-// function scores() {
-//   const newPlayerScores = [];
+function updateScore(score, index) {
+  const newPlayerScores = playersScores;
+  //current score + value 
 
-//   for(let)
-// }
-
-// function updateScore(score, index) {
-//   const newPlayerScores = playersScores;
-//   //current score + value 
-
-//   newPlayerScores[index].score = score;
-//   setPlayersScores([...newPlayerScores])
-// }
+  newPlayerScores[index].score = score;
+  setPlayersScores([...newPlayerScores])
+}
   
   return (
     <div className="container mt-4">
@@ -76,7 +70,7 @@ function updateName(name, index) {
         <div className="col mt-5">
           <Container>
             <div className="boardDiv">
-              <Board playersScores={playersScores} />
+              <Board playersScores={playersScores} updateScore={updateScore}/>
             </div>
           </Container>
         </div>
