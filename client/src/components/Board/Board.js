@@ -2,6 +2,7 @@ import React, {useEffect, useState, useRef} from "react";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import API from "../../utils/API";
+import "./style.css";
 
 
 function Board(props) {

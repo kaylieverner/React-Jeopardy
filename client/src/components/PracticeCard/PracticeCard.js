@@ -5,7 +5,7 @@ const styles = {
         margin: 60,
         background: "#e8eaf6",
         minHeight: 150,
-        width: 600
+        
         
       },
       heading: {
@@ -20,7 +20,7 @@ const styles = {
         padding: 30
       },
       content: {
-        padding: 30
+        padding:10
       },
       
     };
@@ -29,7 +29,7 @@ function PracticeCard(props) {
   return (
 <div>  
       <div className="card" style = {styles.card}>
-        <div className="card-body" style = {styles.heading}>Practice Questions!</div>
+        <div className="card-body" style = {styles.heading}>Practice Question</div>
           <h5 className="card-title" style = {styles.title}>Category: {props.randomQuestion && props.randomQuestion.category.title}</h5>
           <p className="card-text" style = {styles.content}>Value: {props.randomQuestion && props.randomQuestion.value}</p>
           <p className="card-text" style = {styles.content}>Question: {props.randomQuestion && props.randomQuestion.question}</p>

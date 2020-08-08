@@ -38,14 +38,16 @@ function Practice() {
   }
 
   return (
-    <Grommet>
-    <Box>
-      <h1>Practice</h1>
-      <PracticeCard randomQuestion={randomQuestion[0]}></PracticeCard>
-      <Button color="primary" onClick={showAnswer}> Show Answer</Button>
-      <Button color="primary" onClick={loadRandomQuestion}>Next Question</Button> 
-    </Box>
-    </Grommet>
+    <div className="container">
+      <div className="row">
+        <div className="col text-center">
+          <h1>Practice</h1>
+          <PracticeCard randomQuestion={randomQuestion[0]}></PracticeCard>
+          <Button className="m-2" color="primary" onClick={showAnswer}> Show Answer</Button>
+          <Button color="primary" onClick={loadRandomQuestion}>Next Question</Button>
+        </div>
+      </div>
+    </div>
   );
 }
 
