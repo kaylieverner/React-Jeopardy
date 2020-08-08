@@ -1,6 +1,4 @@
 import axios from "axios";
-var passport = require("../config/passport");
-const db = require("../models");
 
 export default {
   // Gets random categories
