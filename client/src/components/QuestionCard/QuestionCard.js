@@ -1,33 +1,33 @@
 import React, {useState} from "react";
 import QuestionModal from "../QuestionModal/QuestionModal";
+import "./style.css"
 
 function QuestionCard(props) {
 const [modalShow, setModalShow] = useState(false);
+const [disableLink, setDisableLink] = useState(false);
 
   function showModal(props){
-    console.log(props, 'In show modal props');
+    // console.log(props, 'In show modal props');
     setModalShow(true);
-  }
-
-
-  //needs to be updated to disable link after being clicked
-  function disableBtn() {
-    document.getElementById("answerBtn").classList.add("disabled");
+    setDisableLink(true)
   }
 
   return (
-      <div className="col" >
+      <div className="col cardCol" >
         <QuestionModal  show={modalShow}
           onHide={() => setModalShow(false)}
           props={props}
+          setModalShow={setModalShow}
         ></QuestionModal>
         <div className="card">
-          <div className="card-body text-center" id={props.categoryID} index={props.index}>
+          <div className="card-body text-center questionCard" value={props.level} catID={props.categoryID} index={props.index}>
             <button 
-              id="answerBtn"
+              id={props.categoryID}
               type="button" 
               className="btn btn-link" 
-              onClick={() => showModal(props)}>
+              disabled={disableLink}
+              onClick={() => showModal(props)}
+              >
               {props.level}
             </button>
           </div>

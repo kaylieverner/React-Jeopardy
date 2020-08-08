@@ -2,13 +2,15 @@ import React from "react";
 import {Box, TextInput, Heading} from 'grommet';
 
 function PlayerScore(props) {
+  console.log(props);
+
   return (
-    <div>
-        <Box direction="row-responsive" gap="small">
-            <TextInput placeholder="Name"/>
-        </Box>
-        <Box direction="row-responsive" gap="small">
-            <Heading margin="large">100</Heading>
+    <div className="text-center">
+        <Box direction="column" gap="medium" width="255px">
+            <Heading margin="medium">{props.player[props.index].score}</Heading>
+            <TextInput placeholder="Name" margin="medium" onChange={event => {
+              props.updateName(event.target.value, props.index)
+            }}/>
         </Box>
     </div>
   );

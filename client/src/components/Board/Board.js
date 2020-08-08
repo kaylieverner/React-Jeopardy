@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import API from "../../utils/API";
+import "./style.css";
 
-function Board() {
+
+function Board(props) {
 const [categories, setCategories] = useState([]);
 const [questions, setQuestions] = useState([]);
 const [twoHundredQuestions, setTwoHundredQuestions] = useState([]);
@@ -11,7 +13,6 @@ const [fourHundredQuestions, setFourHundredQuestions] = useState([]);
 const [sixHundredQuestions, setSixHundredQuestions] = useState([]);
 const [eightHundredQuestions, setEightHundredQuestions] = useState([]);
 const [thousandQuestions, setThousandQuestions] = useState([]);
-
 
 useEffect(() => {
     loadCategories()
@@ -70,9 +71,11 @@ useEffect(() => {
   }
 
   
+  
+  
   return (
+      
     <div className="boardContainer">
-        
         <div className="row categoryRow">
             {categories.map((cat)=>{
             return(
@@ -80,28 +83,28 @@ useEffect(() => {
         </div>
         <div className="row 200Row">
             {twoHundredQuestions.map((question)=>{
-                return <QuestionCard level='200' question={twoHundredQuestions} categoryID={question.category_id} index={twoHundredQuestions.indexOf(question)}></QuestionCard>
+                return <QuestionCard level='200' question={twoHundredQuestions} categoryID={question.category_id} index={twoHundredQuestions.indexOf(question)}  playersScores={props.playersScores} updateScore={props.updateScore}></QuestionCard>
             })}
         </div>
         <div className="row 400Row">
             {fourHundredQuestions.map((question)=>{
                 return <QuestionCard level='400' question={fourHundredQuestions}
-                categoryID={question.category_id} index={fourHundredQuestions.indexOf(question)}></QuestionCard>
+                categoryID={question.category_id} index={fourHundredQuestions.indexOf(question)} playersScores={props.playersScores} updateScore={props.updateScore}></QuestionCard>
             })}
         </div>
         <div className="row 600Row">
             {sixHundredQuestions.map((question)=>{
-                return <QuestionCard level='600' question={sixHundredQuestions} categoryID={question.category_id} index={sixHundredQuestions.indexOf(question)}></QuestionCard>
+                return <QuestionCard level='600' question={sixHundredQuestions} categoryID={question.category_id} index={sixHundredQuestions.indexOf(question)} playersScores={props.playersScores} updateScore={props.updateScore}></QuestionCard>
             })}
         </div>
         <div className="row 800Row">
             {eightHundredQuestions.map((question)=>{
-                return <QuestionCard level='800' question={eightHundredQuestions} categoryID={question.category_id} index={eightHundredQuestions.indexOf(question)}></QuestionCard>
+                return <QuestionCard level='800' question={eightHundredQuestions} categoryID={question.category_id} index={eightHundredQuestions.indexOf(question)} playersScores={props.playersScores} updateScore={props.updateScore}></QuestionCard>
             })}
         </div>
         <div className="row 1000Row">
             {thousandQuestions.map((question)=>{
-                return <QuestionCard level='1000' question={thousandQuestions} categoryID={question.category_id} index={thousandQuestions.indexOf(question)}></QuestionCard>
+                return <QuestionCard level='1000' question={thousandQuestions} categoryID={question.category_id} index={thousandQuestions.indexOf(question)} playersScores={props.playersScores} updateScore={props.updateScore}></QuestionCard>
             })}
         </div>
     </div>

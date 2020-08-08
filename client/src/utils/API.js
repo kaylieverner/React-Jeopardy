@@ -8,6 +8,9 @@ export default {
   getQuestions: function(id) {
     return axios.get("http://jservice.io/api/category?id=" + id)
   },
+  getRandomQuestion: function() {
+    return axios.get("http://jservice.io/api/random")
+  },
 
   ///////////////////////////////////////
   // Gets the book with the given id
