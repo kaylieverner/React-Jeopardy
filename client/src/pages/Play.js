@@ -8,9 +8,11 @@ import "./style.css";
 
 function Play() {
 const [playersScores, setPlayersScores] = useState([]);
+const [showNumofPlayersDiv, setShowNumOfPlayersDiv] = useState(true);
 const playerCounts = [1, 2, 3, 4];
 
 function players(count) {
+  setShowNumOfPlayersDiv(false);
   const newPlayerScores = [];
   
   for(let i = 0; i < count; i++) {
@@ -39,24 +41,21 @@ function updateScore(score, index) {
   return (
     <div className="container mt-4">
       <div className="row">
-        <div className="col mb-5">
-          <Container>
-          <Box direction="row-responsive" gap="small">
+        <div className="col mb-5 text-center numOfPlayers">
+            {showNumofPlayersDiv ? <Container>
             <h3>Choose the Number of Players</h3>
             {playerCounts.map(number => (
-              <Button className="m-2" key={String(number)} onClick={() => players(number)}>
+              <Button className="m-2 playerNumBtn" key={String(number)} onClick={() => players(number)}>
                 {number}
               </Button>
-            ))}
-            </Box>
-          </Container>
+            ))} </Container>: null}
         </div>
       </div>
-      <div className="row">
-        <div className="col">
-        <Container>
-            <h3 className="mb-2">Scores</h3>
-            <Box direction="row-responsive" gap="small">
+      {showNumofPlayersDiv ? null : <div><div className="row">
+        <div className="col text-center">
+          <Container>
+            <h3 className="mb-2 scores">Scores</h3>
+            <Box direction="row-responsive" gap="small" alignContent="center">
               {playersScores.map((player, index) => {
                 return <PlayerScore player={playersScores} updateName={updateName} index={index} />
               })}
@@ -66,13 +65,11 @@ function updateScore(score, index) {
       </div>
       <div className="row">
         <div className="col mt-5">
-          
             <div className="boardDiv mb-5">
               <Board playersScores={playersScores} updateScore={updateScore}/>
             </div>
-          
         </div>
-      </div>
+      </div> </div>}
       </div>
   );
 }

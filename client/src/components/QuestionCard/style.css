@@ -11,3 +11,7 @@
 .cardCol {
     padding: 0;
 }
+
+.btn-link:hover {
+    color: white;
+}

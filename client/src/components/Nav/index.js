@@ -1,9 +1,10 @@
 import React from "react";
+import "./style.css";
 
 function Nav() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand" href="/">
+    <nav className="navbar navbar-expand-lg">
+      <a className="navbar-brand gameTitle" href="/">
         React Jeopardy
       </a>
       <a className="navbar-brand" href="/login">

@@ -5,7 +5,7 @@ function PlayerScore(props) {
   console.log(props);
 
   return (
-    <div>
+    <div className="text-center">
         <Box direction="row-responsive" gap="small">
             <TextInput placeholder="Name" onChange={event => {
               props.updateName(event.target.value, props.index)

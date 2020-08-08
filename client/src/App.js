@@ -8,12 +8,14 @@ import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import { Grommet } from 'grommet'; 
 
+const theme={ global: { colors: { doc: '#ff99cc' } } }
+
 function App() {
   return (
-    <Grommet plain>
+    <Grommet theme={theme}>
     <Router>
       <div>
-        <Nav></Nav>
+        <Nav/>
         <Switch>
           <Route exact path={["/", "/login"]}>
             <Login />
