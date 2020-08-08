@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from "react";
+import React, {useEffect, useState} from "react";
 import CategoryCard from "../CategoryCard/CategoryCard";
 import QuestionCard from "../QuestionCard/QuestionCard";
 import API from "../../utils/API";
@@ -35,13 +35,8 @@ useEffect(() => {
     } 
 }, [questions])
 
-useEffect(() => {
-    console.log(fourHundredQuestions)
-  }, [fourHundredQuestions])
-
-  //call API to retrieve categories 
   function loadCategories() {
-    API.getCategories()
+    API.getCategories(Math.floor(Math.random() * 2000))
     .then(res => {
         setCategories(res.data)
     })
@@ -69,9 +64,6 @@ useEffect(() => {
     })
     return tempArray;
   }
-
-  
-  
   
   return (
       

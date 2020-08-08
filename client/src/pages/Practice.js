@@ -1,12 +1,7 @@
 import React, {useState, useEffect} from "react";
-import { Box, Grommet } from 'grommet';
-import QuestionCard from "../components/QuestionCard/QuestionCard"
 import PracticeCard from "../components/PracticeCard/PracticeCard";
 import { Button } from 'react-bootstrap';
 import API from "../utils/API";
-
-//practice game
-//single question card that serves a random question 
 
 function Practice() {
   const [randomQuestion, setRandomQuestion] = useState([]);

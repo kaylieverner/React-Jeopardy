@@ -10,7 +10,6 @@ const styles = {
         background: "gold",
         minHeight: 30,
         lineHeight: 2.5,
-        fontSize: "1.2rem",
         color: "white",
         padding: "0 20px",
         fontSize: 30,
