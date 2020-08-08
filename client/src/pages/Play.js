@@ -37,6 +37,11 @@ function updateScore(score, index) {
   newPlayerScores[index].score = score;
   setPlayersScores([...newPlayerScores])
 }
+
+// function endGame() {
+//   //write player names and scores to database
+//   //update leaderboard with top five players
+// }
   
   return (
     <div className="container mt-4">
