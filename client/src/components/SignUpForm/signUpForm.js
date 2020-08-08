@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import API from "../utils/API";
-class loginForm extends Component {
+import API from '../../utils/API'
+
+
+class signUpForm extends Component {
   // Setting the component's initial state
   state = {
     username: "",
@@ -9,11 +11,11 @@ class loginForm extends Component {
 
   handleInputChange = (event) => {
     // Getting the value and name of the input which triggered the change
-    const { info, value } = event.target;
-    console.log(event);
+    const { name, value } = event.target;
+
     // Updating the input's state
     this.setState({
-      [info]: value,
+      [name]: value,
     });
   };
 
@@ -22,13 +24,14 @@ class loginForm extends Component {
     event.preventDefault();
 
     //function to perform post route  to api/loginuser
-    function loginUser(email, password) {
-      API.loginUser({
+    function signUpUser(email, password) {
+      
+      API.signUpPost({
         email: email,
         password: password,
       })
         .then(function () {
-          window.location.replace("/play");
+          window.location.replace("/login");
           // If there's an error, log the error
         })
         .catch(function (err) {
@@ -42,7 +45,7 @@ class loginForm extends Component {
       password: "",
     });
 
-    loginUser(this.state.username, this.state.password);
+    signUpUser(this.state.username, this.state.password);
   };
 
   render() {
@@ -71,4 +74,4 @@ class loginForm extends Component {
   }
 }
 
-export default loginForm;
+export default signUpForm;

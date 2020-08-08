@@ -7,8 +7,8 @@ import React, { useState, useEffect } from "react";
 // import { List, ListItem } from "../components/List";
 // import { Input, TextArea, FormBtn } from "../components/Form";
 import { Box, Grommet } from "grommet";
-import SignUpForm from "../components/signUpForm";
-import LoginForm from "../components/loginForm";
+import SignUpForm from "../components/SignUpForm/signUpForm";
+import LoginForm from "../components/LoginForm/loginForm";
 
 function Login() {
   return (
