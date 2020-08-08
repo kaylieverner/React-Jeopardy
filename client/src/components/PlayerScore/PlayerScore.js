@@ -6,13 +6,11 @@ function PlayerScore(props) {
 
   return (
     <div className="text-center">
-        <Box direction="row-responsive" gap="small">
-            <TextInput placeholder="Name" onChange={event => {
+        <Box direction="column" gap="medium" width="255px">
+            <Heading margin="medium">{props.player[props.index].score}</Heading>
+            <TextInput placeholder="Name" margin="medium" onChange={event => {
               props.updateName(event.target.value, props.index)
             }}/>
-        </Box>
-        <Box direction="row-responsive" gap="small">
-            <Heading margin="large">{props.player[props.index].score}</Heading>
         </Box>
     </div>
   );
