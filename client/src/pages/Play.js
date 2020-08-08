@@ -69,7 +69,17 @@ function updateScore(score, index) {
               <Board playersScores={playersScores} updateScore={updateScore}/>
             </div>
         </div>
-      </div> </div>}
+      </div> 
+      <div className="row">
+        <div className="col mt-5">
+            <div className="mb-5 text-center">
+            <Button className="m-2 endGameBtn">
+                End Game
+            </Button>
+            </div>
+        </div>
+      </div>
+      </div>}
       </div>
   );
 }

@@ -15,3 +15,15 @@ h3 {
     background: rgb(26, 23, 168);
     border: none;
 }
+
+.endGameBtn {
+    background: gold;
+    border: none;
+    font-size: 20px;
+}
+
+.endGameBtn:hover {
+    background: red;
+    border: none;
+}
+
