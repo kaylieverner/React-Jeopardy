@@ -11,10 +11,12 @@ function QuestionModal(props) {
   }
 
   function addPoints(index) {
+    const currentScores = props.props.playersScores; 
     const pointsEarned = parseInt(props.props.level);
 
-    const newScore = props.props.playersScores[index].score + pointsEarned;
-    { props.props.updateScore(newScore, index) }
+    const newScore = props.props.playersScores[index].score + pointsEarned; 
+    console.log(newScore);
+    {props.props.updateScore(newScore, index)}
     props.setModalShow(false)
   }
 
