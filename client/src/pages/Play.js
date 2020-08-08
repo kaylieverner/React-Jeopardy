@@ -41,6 +41,7 @@ function updateScore(score, index) {
 // function endGame() {
 //   //write player names and scores to database
 //   //update leaderboard with top five players
+    //refresh page to reload play.js page 
 // }
   
   return (
