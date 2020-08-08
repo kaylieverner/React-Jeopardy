@@ -1,98 +1,92 @@
-import React from "react";
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
-import {Box, Table, TableHeader, TableRow, TableCell, TableBody, DataTable, Text, Meter} from 'grommet';
-
-// set up game board 
-// API calls to get questions/answers/categories
-// Player scores
-// Save scores to DB 
+import React, {useState} from "react";
+import {Box} from 'grommet';
+import Container from "../components/Container/Container";
+import PlayerScore from "../components/PlayerScore/PlayerScore";
+import Board from "../components/Board/Board";
+import { Button } from 'react-bootstrap';
+import "./style.css";
 
 function Play() {
-  return (
-    <Box>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableCell scope="col" border="all">
-              Category 1
-            </TableCell>
-            <TableCell scope="col" border="all">
-              Category 2
-            </TableCell>
-            <TableCell scope="col" border="all">
-              Category 3
-            </TableCell>
-            <TableCell scope="col" border="all">
-              Category 4
-            </TableCell>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell scope="row">
-              <strong>Eric</strong>
-            </TableCell>
-            <TableCell border="all">Coconut</TableCell>
-            <TableCell border="all">Coconut</TableCell>
-            <TableCell border="all">Coconut</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell scope="row" border="all">
-              Chris
-            </TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell scope="row" border="all">
-              Chris
-            </TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell scope="row" border="all">
-            Chris
-            </TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-            <TableCell border="all">Watermelon</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+const [playersScores, setPlayersScores] = useState([]);
+const [showNumofPlayersDiv, setShowNumOfPlayersDiv] = useState(true);
+const playerCounts = [1, 2, 3, 4];
 
-      <DataTable
-  columns={[
-    {
-      property: 'name',
-      header: <Text>Name</Text>,
-      primary: true,
-    },
-    {
-      property: 'percent',
-      header: 'Points',
-      render: datum => (
-        <Box pad={{ vertical: 'xsmall' }}>
-          <Meter
-            values={[{ value: datum.percent }]}
-            thickness="small"
-            size="small"
-          />
-        </Box>
-      ),
-    },
-  ]}
-  data={[
-    { name: 'Player 1', percent: 20 },
-    { name: 'Player 2', percent: 30 },
-    { name: 'Player 3', percent: 40 },
-    { name: 'Player 4', percent: 80 },
-  ]}
-/>
-    </Box>
+function players(count) {
+  setShowNumOfPlayersDiv(false);
+  const newPlayerScores = [];
+  
+  for(let i = 0; i < count; i++) {
+    const player = { name: '', score: 0 };
+    newPlayerScores.push(player)
+  }
+
+  setPlayersScores([...newPlayerScores])
+}
+
+function updateName(name, index) {
+  const newPlayerScores = playersScores;
+
+  newPlayerScores[index].name = name;
+  setPlayersScores([...newPlayerScores])
+}
+
+function updateScore(score, index) {
+  const newPlayerScores = playersScores;
+  //current score + value 
+
+  newPlayerScores[index].score = score;
+  setPlayersScores([...newPlayerScores])
+}
+
+// function endGame() {
+//   //write player names and scores to database
+//   //update leaderboard with top five players
+    //refresh page to reload play.js page 
+// }
+  
+  return (
+    <div className="container mt-4">
+      <div className="row">
+        <div className="col mb-5 text-center numOfPlayers">
+            {showNumofPlayersDiv ? <Container>
+            <h3>Choose the Number of Players</h3>
+            {playerCounts.map(number => (
+              <Button className="m-2 playerNumBtn" key={String(number)} onClick={() => players(number)}>
+                {number}
+              </Button>
+            ))} </Container>: null}
+        </div>
+      </div>
+      {showNumofPlayersDiv ? null : <div><div className="row">
+        <div className="col text-center">
+          <Container>
+            <h3 className="mb-2 scores">Scores</h3>
+            <Box direction="row-responsive" gap="small" alignContent="center">
+              {playersScores.map((player, index) => {
+                return <PlayerScore player={playersScores} updateName={updateName} index={index} />
+              })}
+            </Box>
+          </Container>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col mt-5">
+            <div className="boardDiv mb-5">
+              <Board playersScores={playersScores} updateScore={updateScore}/>
+            </div>
+        </div>
+      </div> 
+      <div className="row">
+        <div className="col mt-5">
+            <div className="mb-5 text-center">
+            <Button className="m-2 endGameBtn">
+                End Game
+            </Button>
+            </div>
+        </div>
+      </div>
+      </div>}
+      </div>
   );
 }
 
