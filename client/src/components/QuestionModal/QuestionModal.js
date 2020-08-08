@@ -42,7 +42,7 @@ function QuestionModal(props) {
             {props.props.playersScores.map((player, index) => {
               return <Button className="m-2 modalBtn" onClick={() => addPoints(index)} id={index}>{props.props.playersScores[index].name}</Button>
             })}
-            <Button className="m-2 modalBtn">None</Button>
+            <Button className="m-2 modalBtn" onClick={() => props.setModalShow(false)}>None</Button>
           </div> : null}
         </div>
       </Modal.Body>
