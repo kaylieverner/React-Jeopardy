@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button, Modal } from 'react-bootstrap';
 import './style.css'
 
 function QuestionModal(props) {
-  console.log(props)
+  const [showAssignPointsDiv, setShowAssignPointsDiv] = useState(false);
+
     function showAnswer() {
       document.getElementById("answer").classList.remove("hidden");
+      setShowAssignPointsDiv(true);
     }
 
     function addPoints(index) {
@@ -15,6 +17,7 @@ function QuestionModal(props) {
       const newScore = props.props.playersScores[index].score + pointsEarned; 
       console.log(newScore);
       {props.props.updateScore(newScore, index)}
+      props.setModalShow(false)
     }
 
     return (
@@ -31,21 +34,21 @@ function QuestionModal(props) {
       </Modal.Header>
       <Modal.Body>
         <div className="answerContainer">
-        <Button onClick={showAnswer}>Show Answer</Button>
+        <Button className="modalBtn" onClick={showAnswer}>Show Answer</Button>
           <div className="answerDiv hidden m-3" id="answer">
           {props.props && props.props.question[props.props.index].answer}
           </div>
-          <div className="row text-center m-3">
+          {showAssignPointsDiv ? <div className="row text-center m-3">
           <p className="m-2">Assign Points To:</p>
           {props.props.playersScores.map((player, index) => {
-                return <Button className="m-2" onClick={() => addPoints(index)} id={index}>{props.props.playersScores[index].name}</Button>
+                return <Button className="m-2 modalBtn" onClick={() => addPoints(index)} id={index}>{props.props.playersScores[index].name}</Button>
               })}
-              <Button className="m-2">None</Button>
-          </div>
+              <Button className="m-2 modalBtn">None</Button>
+          </div> : null }
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+        <Button onClick={props.onHide} className="modalBtn">Close</Button>
       </Modal.Footer>
     </Modal>
     );

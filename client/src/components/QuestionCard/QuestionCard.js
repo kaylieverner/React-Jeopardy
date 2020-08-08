@@ -17,6 +17,7 @@ const [disableLink, setDisableLink] = useState(false);
         <QuestionModal  show={modalShow}
           onHide={() => setModalShow(false)}
           props={props}
+          setModalShow={setModalShow}
         ></QuestionModal>
         <div className="card">
           <div className="card-body text-center questionCard" value={props.level} catID={props.categoryID} index={props.index}>

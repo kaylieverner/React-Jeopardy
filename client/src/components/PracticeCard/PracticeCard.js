@@ -5,16 +5,16 @@ const styles = {
         margin: 60,
         background: "#e8eaf6",
         minHeight: 150,
-        
-        
       },
       heading: {
-        background: "salmon",
+        background: "gold",
         minHeight: 30,
         lineHeight: 2.5,
         fontSize: "1.2rem",
         color: "white",
-        padding: "0 20px"
+        padding: "0 20px",
+        fontSize: 30,
+        fontFamily: 'Alegreya Sans SC'
       },
       title: {
         padding: 30
@@ -29,11 +29,9 @@ function PracticeCard(props) {
   return (
 <div>  
       <div className="card" style = {styles.card}>
-        <div className="card-body" style = {styles.heading}>Practice Question</div>
-          <h5 className="card-title" style = {styles.title}>Category: {props.randomQuestion && props.randomQuestion.category.title}</h5>
+        <div className="card-body" style = {styles.heading}>Category: {props.randomQuestion && props.randomQuestion.category.title}</div>
+          <h5 className="card-title" style = {styles.title}>Question: {props.randomQuestion && props.randomQuestion.question}</h5>
           <p className="card-text" style = {styles.content}>Value: {props.randomQuestion && props.randomQuestion.value}</p>
-          <p className="card-text" style = {styles.content}>Question: {props.randomQuestion && props.randomQuestion.question}</p>
-
           <p className="answer hidden" style = {styles.content} id="practiceAnswer">Answer: {props.randomQuestion && props.randomQuestion.answer}</p>
         </div>
       </div>
