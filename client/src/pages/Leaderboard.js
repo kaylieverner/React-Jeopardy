@@ -43,7 +43,7 @@ const [playerData, setPlayerData] = useState([]);
       </thead>
       <tbody>
         {playerData.map((score) => {
-        return <LeaderboardRow playerData={playerData} id={score.id} player={score.name} score={score.score}/>
+        return <LeaderboardRow playerData={playerData} player={score.name} score={score.score}/>
         })}
       </tbody>
     </Table>

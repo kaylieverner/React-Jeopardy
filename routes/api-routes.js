@@ -51,7 +51,7 @@ module.exports = function (app) {
   //kaylie
    // GET route for getting all of the scores
    app.get("/api/playersScores/", function(req, res) {
-    db.Score.findAll({  limit: 10, order: [ ['score',  'DESC'] ]}).then(function(dbPost) {
+    db.Score.findAll({ order: [ ["score",  "DESC"] ]}).then(function(dbPost) {
         res.json(dbPost);
       });
   });
