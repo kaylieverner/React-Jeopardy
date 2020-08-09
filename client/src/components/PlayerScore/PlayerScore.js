@@ -2,7 +2,6 @@ import React from "react";
 import {Box, TextInput, Heading} from 'grommet';
 
 function PlayerScore(props) {
-  console.log(props);
 
   return (
     <div className="text-center">

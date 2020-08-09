@@ -1,16 +1,27 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Col, Row, } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import { Box, Grommet } from "grommet";
 import { Table, Container } from "reactstrap";
 import "./style.css";
-//log of high scores from available users 
-//api routes to get and post score data the user enters 
+import API from "../utils/API"
+import LeaderboardRow from "../components/LeaderboardRow/LeaderboardRow"; 
 
 const Board = (props) => {
+const [playerData, setPlayerData] = useState([]);
+
+  useEffect(() => {
+    getScores()
+  }, [])
+
+  function getScores() {
+    API.getPlayersScores().then(data => {
+      let scores = data.data; 
+      setPlayerData(scores);
+    })
+  }
+
   return (
     <Container>
-
     <Row>
        <Col size="md-12">
         <Jumbotron className="leaderboardJumbotron">
@@ -28,31 +39,9 @@ const Board = (props) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">4</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
-        <tr>
-          <th scope="row">5</th>
-          <td>Table cell</td>
-          <td>Table cell</td>
-        </tr>
+        {playerData.map((score, i) => {
+       return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
+       })}
       </tbody>
     </Table>
     </Container>
