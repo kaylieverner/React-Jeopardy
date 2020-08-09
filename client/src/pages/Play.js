@@ -6,6 +6,9 @@ import Board from "../components/Board/Board";
 import { Button } from 'react-bootstrap';
 import API from "../utils/API"
 import "./style.css";
+import { NavLink } from 'react-router-dom'
+
+
 
 function Play() {
 const [playersScores, setPlayersScores] = useState([]);
@@ -40,30 +43,8 @@ function updateScore(score, index) {
 }
 
 function endGame() {
-  console.log(playersScores)
-  // API.savePlayersScores(playersScores)
-  //write player names and scores to database
-  //update leaderboard with top five players
-  //refresh page to reload play.js page 
-  // for (var i = 0; i<playersScores.length; i++) {
-  //   if (!playersScores[i].name) {
-  //     return;
-  //   }
-  //   else {
-  //     var newPlayerScoresData = {
-  //       player: playersScores[i].name,
-  //       score: playersScores[i].score
-  //     };
-
-  //     API.savePlayersScores(newPlayerScoresData)
-  //   }
-  // }
-  // if (playersScores)
  playersScores.forEach((element) => {
-   console.log(element)
-    API.savePlayersScores(element, function() {
-      window.location.href = "/play"
-    })
+    API.savePlayersScores(element)
   })
 }
   
@@ -102,9 +83,11 @@ function endGame() {
       <div className="row">
         <div className="col mt-5">
             <div className="mb-5 text-center">
-            <Button className="m-2 endGameBtn" onClick={() => endGame()}>
+            <NavLink to="/leaderboard">
+              <Button className="m-2 endGameBtn" onClick={() => endGame()}>
                 End Game
-            </Button>
+              </Button>
+            </NavLink>
             </div>
         </div>
       </div>

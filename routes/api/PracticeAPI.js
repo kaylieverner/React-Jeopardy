@@ -1,1 +1,0 @@
-//api route to get single random question and answer 

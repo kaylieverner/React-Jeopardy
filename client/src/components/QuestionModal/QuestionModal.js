@@ -15,7 +15,6 @@ function QuestionModal(props) {
     const pointsEarned = parseInt(props.props.level);
 
     const newScore = props.props.playersScores[index].score + pointsEarned; 
-    console.log(newScore);
     {props.props.updateScore(newScore, index)}
     props.setModalShow(false)
   }
