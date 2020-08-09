@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 function LeaderboardRow(props) {
-console.log(props)
   return (
     <tr>
         <th scope="row">{props.rank}</th>
