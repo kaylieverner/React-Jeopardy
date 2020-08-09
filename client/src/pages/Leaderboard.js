@@ -11,6 +11,7 @@ import LeaderboardRow from "../components/LeaderboardRow/LeaderboardRow";
 
 const Board = (props) => {
 const [playerData, setPlayerData] = useState([]);
+const [rank, setRank] = useState(0);
 
   useEffect(() => {
     getScores()
@@ -42,9 +43,13 @@ const [playerData, setPlayerData] = useState([]);
         </tr>
       </thead>
       <tbody>
-        {playerData.map((score) => {
+        {/* {playerData.map((score) => {
         return <LeaderboardRow playerData={playerData} player={score.name} score={score.score}/>
-        })}
+        })} */}
+
+        {playerData.map((score, i) => {
+       return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
+       })}
       </tbody>
     </Table>
     </Container>
