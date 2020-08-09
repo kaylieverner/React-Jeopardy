@@ -14,7 +14,9 @@ export default {
   savePlayersScores: function(playerData) {
     return axios.post("/api/playersScores/", playerData)
   },
+
   getPlayersScores: function() {
     return axios.get("/api/playersScores/")
   }
+
 };
