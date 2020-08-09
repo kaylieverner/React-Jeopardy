@@ -13,12 +13,14 @@ const Board = (props) => {
 
   function getScores() {
     API.getPlayersScores().then(data => {
-      console.log("Scores", data);
-      if (!data || !data.length) {
+      console.log(data)
+      let scores = data.data;
+      console.log(scores)
+      if (!scores) {
         displayNone()
       }
       else {
-        displayScores(data)
+        displayScores(scores)
       }
     })
 
@@ -47,11 +49,12 @@ const Board = (props) => {
     </div>
   }
 
-  function displayScores(data) {
+  function displayScores(scores) {
+    console.log("DISPLAY SCORES FUNCTION")
     return <div>
     <tbody>
-    {data.map((data)=>{
-      return <LeaderboardRow index={data.index} player={data.player} score={data.score}/>
+    {scores.map((score)=>{
+      return <LeaderboardRow id={score.id} player={score.player} score={score.score}/>
     })}
     </tbody>
     </div>

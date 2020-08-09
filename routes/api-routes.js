@@ -58,10 +58,11 @@ module.exports = function (app) {
 
 
   // POST route for saving a new score
-  app.post("/api/playersScores", function(req, res) {
+  app.post("/api/playersScores/", function(req, res) {
+    console.log("---- HIT api/playerScores -----")
     db.Score.create({
-        player: req.body,
-        score: req.body
+        player: req.body.player,
+        score: req.body.score
     }).then(function(dbPost) {
         res.json(dbPost);
     });

@@ -40,22 +40,23 @@ function updateScore(score, index) {
 }
 
 function endGame() {
+  API.savePlayersScores(playersScores)
   //write player names and scores to database
   //update leaderboard with top five players
   //refresh page to reload play.js page 
-  for (var i = 0; i<playersScores.length; i++) {
-    if (!playersScores[i].name) {
-      return;
-    }
-    else {
-      var newPlayerScoresData = {
-        player: playersScores[i].name,
-        score: playersScores[i].score
-      };
+  // for (var i = 0; i<playersScores.length; i++) {
+  //   if (!playersScores[i].name) {
+  //     return;
+  //   }
+  //   else {
+  //     var newPlayerScoresData = {
+  //       player: playersScores[i].name,
+  //       score: playersScores[i].score
+  //     };
 
-      API.savePlayersScores(newPlayerScoresData)
-    }
-  }
+  //     API.savePlayersScores(newPlayerScoresData)
+  //   }
+  // }
   // if (playersScores)
   // API.savePlayersScores().then(res => {
   //   console.log(res)
