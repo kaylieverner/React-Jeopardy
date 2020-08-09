@@ -61,7 +61,7 @@ module.exports = function (app) {
   app.post("/api/playersScores/", function(req, res) {
     console.log("---- HIT api/playerScores -----")
     db.Score.create({
-        player: req.body.player,
+        name: req.body.name,
         score: req.body.score
     }).then(function(dbPost) {
         res.json(dbPost);

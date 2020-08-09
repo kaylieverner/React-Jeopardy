@@ -40,7 +40,8 @@ function updateScore(score, index) {
 }
 
 function endGame() {
-  API.savePlayersScores(playersScores)
+  console.log(playersScores)
+  // API.savePlayersScores(playersScores)
   //write player names and scores to database
   //update leaderboard with top five players
   //refresh page to reload play.js page 
@@ -58,10 +59,12 @@ function endGame() {
   //   }
   // }
   // if (playersScores)
-  // API.savePlayersScores().then(res => {
-  //   console.log(res)
-  // })
-  // .catch(err => console.log(err))
+ playersScores.forEach((element) => {
+   console.log(element)
+    API.savePlayersScores(element, function() {
+      window.location.href = "/play"
+    })
+  })
 }
   
   return (
