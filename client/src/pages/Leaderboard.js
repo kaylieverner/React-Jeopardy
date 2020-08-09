@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Col, Row, } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import { Box, Grommet } from "grommet";
@@ -10,54 +10,17 @@ import LeaderboardRow from "../components/LeaderboardRow/LeaderboardRow";
 //api routes to get and post score data the user enters 
 
 const Board = (props) => {
+const [playerData, setPlayerData] = useState([]);
+
+  useEffect(() => {
+    getScores()
+  }, [])
 
   function getScores() {
     API.getPlayersScores().then(data => {
-      console.log(data)
-      let scores = data.data;
-      console.log(scores)
-      if (!scores) {
-        displayNone()
-      }
-      else {
-        displayScores(scores)
-      }
+      let scores = data.data; 
+      setPlayerData(scores);
     })
-
-
-    // API.getPlayersScores(() => {
-    //   console.log("Scores", data);
-    //   if (!data || !data.length) {
-    //     displayNone()
-    //   }
-    //   else {
-    //     displayScores(data)
-    //   }
-    // })
-  }
-
-  function displayNone() {
-    console.log("HIT")
-    return <div>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>No Data Yet</td>
-        <td>No Data Yet</td>
-      </tr>
-    </tbody>
-    </div>
-  }
-
-  function displayScores(scores) {
-    console.log("DISPLAY SCORES FUNCTION")
-    return <div>
-    <tbody>
-    {scores.map((score)=>{
-      return <LeaderboardRow id={score.id} player={score.player} score={score.score}/>
-    })}
-    </tbody>
-    </div>
   }
 
   return (
@@ -78,7 +41,11 @@ const Board = (props) => {
           <th>Score</th>
         </tr>
       </thead>
-      {getScores()}
+      <tbody>
+        {playerData.map((score) => {
+        return <LeaderboardRow playerData={playerData} id={score.id} player={score.player} score={score.score}/>
+        })}
+      </tbody>
     </Table>
     </Container>
   );
