@@ -4,6 +4,7 @@ import Container from "../components/Container/Container";
 import PlayerScore from "../components/PlayerScore/PlayerScore";
 import Board from "../components/Board/Board";
 import { Button } from 'react-bootstrap';
+import API from "../utils/API"
 import "./style.css";
 
 function Play() {
@@ -38,11 +39,29 @@ function updateScore(score, index) {
   setPlayersScores([...newPlayerScores])
 }
 
-// function endGame() {
-//   //write player names and scores to database
-//   //update leaderboard with top five players
-    //refresh page to reload play.js page 
-// }
+function endGame() {
+  //write player names and scores to database
+  //update leaderboard with top five players
+  //refresh page to reload play.js page 
+  for (var i = 0; i<playersScores.length; i++) {
+    if (!playersScores[i].name) {
+      return;
+    }
+    else {
+      var newPlayerScoresData = {
+        player: playersScores[i].name,
+        score: playersScores[i].score
+      };
+
+      API.savePlayersScores(newPlayerScoresData)
+    }
+  }
+  // if (playersScores)
+  // API.savePlayersScores().then(res => {
+  //   console.log(res)
+  // })
+  // .catch(err => console.log(err))
+}
   
   return (
     <div className="container mt-4">
@@ -79,7 +98,7 @@ function updateScore(score, index) {
       <div className="row">
         <div className="col mt-5">
             <div className="mb-5 text-center">
-            <Button className="m-2 endGameBtn">
+            <Button className="m-2 endGameBtn" onClick={() => endGame()}>
                 End Game
             </Button>
             </div>
