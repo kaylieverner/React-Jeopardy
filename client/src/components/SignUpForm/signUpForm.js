@@ -7,8 +7,7 @@ class SignUpForm extends Component {
 		super()
 		this.state = {
 			username: '',
-			password: '',
-			confirmPassword: '',
+			password: ''
 
 		}
 		this.handleFormSubmit = this.handleFormSubmit.bind(this)
@@ -25,10 +24,11 @@ class SignUpForm extends Component {
 		event.preventDefault()
 
 		//request to server to add a new username/password
-		axios.post('/user/', {
+		axios.post('/signup', {
 			username: this.state.username,
 			password: this.state.password
 		})
+		
 			.then(response => {
 				console.log(response)
 				if (!response.data.errmsg) {
@@ -40,8 +40,7 @@ class SignUpForm extends Component {
 					console.log('username already taken')
 				}
 			}).catch(error => {
-				console.log('signup error: ')
-				console.log(error)
+				console.log('signup error: ', error)
 
 			})
 	}

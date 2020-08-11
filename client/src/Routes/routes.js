@@ -4,8 +4,8 @@ const User = require('../database/models/user')
 const passport = require('../passport')
 
 
-router.post('/', (req, res) => {
-  console.log('user signup');
+router.post('/signup', (req, res) => {
+  console.log('req.body', req.body);
 
   const { username, password } = req.body
   // ADD VALIDATION
@@ -34,11 +34,10 @@ router.post('/', (req, res) => {
 
 
 router.post(
-  '/login',
+  '/user/login',
   function (req, res, next) {
-      console.log('routes/user.js, login, req.body: ');
-      console.log(req.body)
-      next()
+      console.log(req.body);
+      next();
   },
   passport.authenticate('local'),
   (req, res) => {
@@ -51,15 +50,15 @@ router.post(
 )
 
 
-router.get('/', (req, res, next) => {
-  console.log('===== user!!======')
-  console.log(req.user)
-  if (req.user) {
-      res.json({ user: req.user })
-  } else {
-      res.json({ user: null })
-  }
-})
+// router.get('/', (req, res, next) => {
+//   console.log('===== user!!======')
+//   console.log(req.user)
+//   if (req.user) {
+//       res.json({ user: req.user })
+//   } else {
+//       res.json({ user: null })
+//   }
+// })
 
 router.post('/logout', (req, res) => {
   if (req.user) {
