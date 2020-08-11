@@ -1,30 +1,76 @@
-import React, { useState, useEffect } from "react";
-// import DeleteBtn from "../components/DeleteBtn";
-// import Jumbotron from "../components/Jumbotron";
-// import API from "../utils/API";
-// import { Link } from "react-router-dom";
-// import { Col, Row, Container } from "../components/Grid";
-// import { List, ListItem } from "../components/List";
-// import { Input, TextArea, FormBtn } from "../components/Form";
+import React, { useState, useEffect, Component } from "react";
+import { Link, Redirect } from 'react-router-dom';
 import { Box, Grommet } from "grommet";
-import SignUpForm from "../components/SignUpForm/signUpForm";
 import LoginForm from "../components/LoginForm/loginForm";
+import API from "../utils/API";
+import AuthContext from '../../contexts/AuthContext';
+import LoginForm from '../../components/LoginForm/LoginForm';
 
-function Login() {
-  return (
-    <Grommet>
-      <Box>
-        <h2>Login</h2>
-        <Box>
-          <LoginForm></LoginForm>
-        </Box>
-        <h2>Signup</h2>
-        <Box>
-          <SignUpForm></SignUpForm>
-        </Box>
-      </Box>
-    </Grommet>
-  );
+class Login extends Component {
+  static contextType = AuthContext;
+
+  state = {
+    redirectToReferrer: false,
+    error: ""
+  }
+
+  handleSubmit = (email, password) => {
+    API.Users.login(email, password)
+      .then(response => response.data)
+      .then(({ user, token }) => {
+        this.context.onLogin(user, token);
+        this.setState({ redirectToReferrer: true, error: "" });
+      })
+      .catch(err => {
+        let message;
+
+        switch (err.response.status) {
+          case 401:
+            message = 'Sorry, that email/password combination is not valid. Please try again.';
+            break;
+          case 500:
+            message = 'Server error. Please try again later.';
+            break;
+          default:
+            message = 'Unknown error.';
+        }
+
+        this.setState({ error: message });
+      });
+  }
+
+  render() {
+    const { from } = this.props.location.state || { from: { pathname: "/secret" } };
+    const { redirectToReferrer } = this.state;
+
+    if (redirectToReferrer) {
+      return <Redirect to={from} />;
+    }
+
+    return (
+      <div className='Login'>
+        <div className='row'>
+          <div className='col'>
+            <h1>Login</h1>
+          </div>
+        </div>
+        {this.state.error &&
+          <div className='row'>
+            <div className='col'>
+              <div className='alert alert-danger mb-3' role='alert'>
+                {this.state.error}
+              </div>
+            </div>
+          </div>}
+        <div className='row'>
+          <div className='col'>
+            <LoginForm onSubmit={this.handleSubmit} />
+            <div className='mt-3'>Don't have an account? <Link to='/register'>Click here to register.</Link></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Login;
