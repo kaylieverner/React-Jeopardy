@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+import { Redirect } from 'react-router-dom'
+import axios from 'axios'
 class loginForm extends Component {
   // Setting the component's initial state
   state = {
@@ -22,32 +23,39 @@ class loginForm extends Component {
     // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
 
-    //function to perform post route  to api/loginuser
-    function loginUser(email, password) {
-      
-      API.loginUser({
-        email: email,
-        password: password,
-      })
-        .then(function () {
-          window.location.replace("/play");
-          // If there's an error, log the error
-        })
-        .catch(function (err) {
-          console.log(err);
-        });
+    console.log('handleSubmit')
+
+        axios.post('/user/login', {
+                username: this.state.username,
+                password: this.state.password
+            })
+            .then(response => {
+                console.log('login response: ')
+                console.log(response)
+                if (response.status === 200) {
+                    // update App.js state
+                    this.props.updateUser({
+                        loggedIn: true,
+                        username: response.data.username
+                    })
+                    // update the state to redirect to home
+                    this.setState({
+                        redirectTo: '/play'
+                    })
+                }
+            }).catch(error => {
+                console.log('login error: ', error)
+                
+                
+            })
     }
 
-    // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
-    this.setState({
-      username: "",
-      password: "",
-    });
-
-    loginUser(this.state.username, this.state.password);
-  };
-
+    // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, 
   render() {
+
+    if (this.state.redirectTo) {
+      return <Redirect to={{ pathname: this.state.redirectTo }} />
+  } else {
     // Notice how each input has a `value`, `name`, and `onChange` prop
     return (
       <div>
@@ -72,5 +80,6 @@ class loginForm extends Component {
     );
   }
 }
+};
 
 export default loginForm;

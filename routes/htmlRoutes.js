@@ -1,31 +1,23 @@
-// Requiring path to so we can use relative routes to our HTML files
-var path = require('path');
+var express = require('express');
+var router = express.Router();
+var path =require('path');
 
-// Requiring our custom middleware for checking if a user is logged in
-var isAuthenticated = require('../config/middleware/isAuthenticated');
+//Gets homepage
+router.get('/', function(req,res,next){
+  res.render('index.ejs', {root: __dirname});
+});
 
-module.exports = function(app) {
 
-  app.get('/', function(req, res) {
-    // If the user already has an account send them to the login page
-    if (req.user) {
-      res.redirect('/login');
-    }
-    res.sendFile(path.join(__dirname, '../public/signup.html'));
-  });
+//gets react app
+router.get('/app', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../client/public', 'index.html'));
+ });
 
-  app.get('/login', function(req, res) {
-    res.sendFile(path.join(__dirname, '../public/login.html'));
-  });
 
  
+//  /* GET React App */
+// router.get(['/app', '/app/*'], function(req, res, next) {
+//  res.sendFile(path.join(__dirname, '../public', 'app.html'));
+// });
 
-  // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get('/members', isAuthenticated, function(req, res) {
-
-    res.sendFile(path.join(__dirname, '../public/index.html'));
-  });
-
-  
-};
+module.exports = router;
