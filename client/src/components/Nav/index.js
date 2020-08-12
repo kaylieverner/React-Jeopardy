@@ -10,6 +10,9 @@ function Nav() {
       <a className="navbar-brand" href="/login">
         Log In
       </a>
+      <a className="navbar-brand" href="/signup">
+        Sign Up
+      </a>
       <a className="navbar-brand" href="/">
         Logout
       </a>

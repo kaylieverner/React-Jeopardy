@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import API from "../../utils/API";
+
 class loginForm extends Component {
   // Setting the component's initial state
   state = {
@@ -17,6 +19,7 @@ class loginForm extends Component {
     this.setState({
       [name]: value,
     });
+    console.log(this.state)
   };
 
   handleFormSubmit = (event) => {
@@ -25,29 +28,51 @@ class loginForm extends Component {
 
     console.log('handleSubmit')
 
-        axios.post('/user/login', {
-                username: this.state.username,
-                password: this.state.password
-            })
-            .then(response => {
-                console.log('login response: ')
-                console.log(response)
-                if (response.status === 200) {
-                    // update App.js state
-                    this.props.updateUser({
-                        loggedIn: true,
-                        username: response.data.username
-                    })
-                    // update the state to redirect to home
-                    this.setState({
-                        redirectTo: '/play'
-                    })
-                }
-            }).catch(error => {
-                console.log('login error: ', error)
+        // axios.post('/user/login', {
+        //         username: this.state.username,
+        //         password: this.state.password
+        //     })
+        //     .then(response => {
+        //         console.log('login response: ')
+        //         console.log(response)
+        //         if (response.status === 200) {
+        //             // update App.js state
+        //             this.props.updateUser({
+        //                 loggedIn: true,
+        //                 username: response.data.username
+        //             })
+        //             // update the state to redirect to home
+        //             this.setState({
+        //                 redirectTo: '/play'
+        //             })
+        //         }
+        //     }).catch(error => {
+        //         console.log('login error: ', error)
                 
                 
-            })
+        //     })
+
+            //kaylie
+            API.loginUser(this.state).then(response => {
+                      console.log('login response: ')
+                      console.log(response)
+                      if (response.status === 200) {
+                          // update App.js state
+                          // this.updateUser({
+                          //     loggedIn: true,
+                          //     username: response.data.username
+                          // })
+                          // update the state to redirect to home
+                          this.setState({
+                              redirectTo: '/play'
+                          })
+                      }
+                  }).catch(error => {
+                      console.log('login error: ', error)
+                      
+                      
+                  })
+      
     }
 
     // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, 
