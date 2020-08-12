@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 import Play from "./pages/Play";
 import Practice from "./pages/Practice";
 import Leaderboard from "./pages/Leaderboard";
@@ -62,6 +63,9 @@ class App extends Component {
             <Switch>
               <Route exact path={["/", "/login"]}>
                 <Login updateUser={this.updateUser} />
+              </Route>
+              <Route exact path="/signup">
+                <SignUp />
               </Route>
               <Route exact path="/play">
                 <Play />
