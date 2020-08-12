@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use("/React-Jeopardy/", express.static("client/build"));
 }
 
 // if (process.env.JAWSDB_URL) {
