@@ -1,5 +1,4 @@
 const express = require("express");
-
 const routes = require("./routes");
 const app = express();
 const bodyParser = require("body-parser");
@@ -20,6 +19,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL)
+} 
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
