@@ -18,5 +18,4 @@ export default {
   getPlayersScores: function() {
     return axios.get("/api/playersScores/")
   }
-
 };
