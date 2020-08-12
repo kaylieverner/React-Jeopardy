@@ -2,8 +2,12 @@ body {
     background-color: rgb(43, 42, 42);
 }
 
-h3 {
+h2, h3 {
     font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+h2 {
+    color: white;
 }
 
 .playerNumBtn {
@@ -39,3 +43,4 @@ td {
     color: white;
     font-family: 'Alegreya Sans SC', sans-serif;
 }
+

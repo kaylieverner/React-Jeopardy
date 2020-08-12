@@ -58,23 +58,29 @@ class SignUpForm extends Component {
   render() {
     // Notice how each input has a `value`, `name`, and `onChange` prop
     return (
-      <div>
-        <form className="form">
-          <input
+		<div className="formContainer">
+        <form>
+          <div class="form-group">
+            <input
+            id="inputUsername"
             value={this.state.username}
             name="username"
             onChange={this.handleInputChange}
             type="text"
             placeholder="Username"
           />
-          <input
+          </div>
+          <div class="form-group">
+            <input
+            id="inputPassword"
             value={this.state.password}
             name="password"
             onChange={this.handleInputChange}
             type="text"
             placeholder="Password"
           />
-          	<button onClick={this.handleFormSubmit}>Submit</button>
+          </div>
+          <Button className="submitBtn" onClick={this.handleFormSubmit}>Submit</Button>
         </form>
       </div>
     )

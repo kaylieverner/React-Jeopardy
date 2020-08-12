@@ -2,21 +2,16 @@ import React from "react";
 import { Box, Grommet } from "grommet";
 import SignUpForm from "../components/SignUpForm/signUpForm";
 import LoginForm from "../components/LoginForm/loginForm";
+import "./style.css"
 
 function Login() {
   return (
-    <Grommet>
-      <Box>
-        <h2>Login</h2>
-        <Box>
-          <LoginForm></LoginForm>
-        </Box>
-        {/* <h2>Signup</h2>
-        <Box>
-          <SignUpForm></SignUpForm>
-        </Box> */}
-      </Box>
-    </Grommet>
+    <div className="formDiv m-5">
+      <h2>Login</h2>
+      <div>
+      <LoginForm></LoginForm>
+      </div>
+    </div>
   );
 }
 
