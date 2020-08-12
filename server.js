@@ -11,7 +11,7 @@ var passport = require('passport');
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("./client/public"));
+app.use("/React-Jeopardy/", express.static("client/build"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
