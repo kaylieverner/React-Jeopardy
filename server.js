@@ -9,8 +9,6 @@ var session = require('express-session');
 var path = require('path');
 var passport = require('passport');
 
-
-
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -18,26 +16,18 @@ app.use(express.static("./client/public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// const staticRoutes = require("./routes/htmlRoutes.js");
-// const appRoutes = require("./routes/api-routes.js");
-
-
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// app.use("/", staticRoutes);
-// app.use("app", appRoutes);
 // We need to use sessions to keep track of our user's login status
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
-
 
 app.use(passport.initialize());
 app.use(passport.session());

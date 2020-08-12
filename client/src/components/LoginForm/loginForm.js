@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Redirect } from 'react-router-dom'
+import { Button } from 'react-bootstrap';
 import axios from 'axios'
 import API from "../../utils/API";
+import "./style.css"
 
 class loginForm extends Component {
   // Setting the component's initial state
@@ -83,23 +85,29 @@ class loginForm extends Component {
   } else {
     // Notice how each input has a `value`, `name`, and `onChange` prop
     return (
-      <div>
-        <form className="form">
-          <input
+      <div className="formContainer">
+        <form>
+          <div class="form-group">
+            <input
+            id="inputUsername"
             value={this.state.username}
             name="username"
             onChange={this.handleInputChange}
             type="text"
             placeholder="Username"
           />
-          <input
+          </div>
+          <div class="form-group">
+            <input
+            id="inputPassword"
             value={this.state.password}
             name="password"
             onChange={this.handleInputChange}
             type="text"
             placeholder="Password"
           />
-          <button onClick={this.handleFormSubmit}>Submit</button>
+          </div>
+          <Button className="submitBtn" onClick={this.handleFormSubmit}>Submit</Button>
         </form>
       </div>
     );
