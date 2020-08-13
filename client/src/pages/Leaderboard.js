@@ -13,11 +13,22 @@ const [playerData, setPlayerData] = useState([]);
     getScores()
   }, [])
 
+  useEffect(() => {
+    loadLeaderboard()
+  }, [playerData])
+
   function getScores() {
     API.getPlayersScores().then(data => {
       let scores = data.data; 
       setPlayerData(scores);
     })
+  }
+
+  function loadLeaderboard() {
+       {playerData.map((score, i) => {
+        return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
+        })}
+    
   }
 
   return (
@@ -39,9 +50,12 @@ const [playerData, setPlayerData] = useState([]);
         </tr>
       </thead>
       <tbody>
-        {playerData.map((score, i) => {
+        {playerData ? playerData.map((score, i) => {
        return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
-       })}
+       }) : null }
+        {/* {playerData.map((score, i) => {
+       return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
+       })} */}
       </tbody>
     </Table>
     </Container>
