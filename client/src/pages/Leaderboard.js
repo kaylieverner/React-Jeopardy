@@ -8,18 +8,20 @@ import LeaderboardRow from "../components/LeaderboardRow/LeaderboardRow";
 
 const Board = (props) => {
 const [playerData, setPlayerData] = useState([]);
+const [dataAvailable, setDataAvailable] = useState(false);
 
   useEffect(() => {
     getScores()
   }, [])
 
   useEffect(() => {
-    loadLeaderboard()
+    setDataAvailable(true)
   }, [playerData])
 
   function getScores() {
     API.getPlayersScores().then(data => {
       let scores = data.data; 
+      console.log(scores)
       setPlayerData(scores);
     })
   }
@@ -28,7 +30,6 @@ const [playerData, setPlayerData] = useState([]);
        {playerData.map((score, i) => {
         return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
         })}
-    
   }
 
   return (
@@ -50,7 +51,7 @@ const [playerData, setPlayerData] = useState([]);
         </tr>
       </thead>
       <tbody>
-        {playerData ? playerData.map((score, i) => {
+        {dataAvailable ? playerData.map((score, i) => {
        return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
        }) : null }
         {/* {playerData.map((score, i) => {
