@@ -15,7 +15,7 @@ export default {
     return axios.post("/api/playersScores/", playerData)
   },
   getPlayersScores: function() {
-    return axios.get("/api/playersScores/")
+    return axios.get("https:localhost:3000/api/playersScores/")
   }, 
   signUpUser: function(userData) {
     return axios.post("/signup", userData)
