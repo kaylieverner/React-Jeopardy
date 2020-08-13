@@ -9,7 +9,6 @@ import Leaderboard from "./pages/Leaderboard";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import { Grommet } from "grommet";
-import './style.css';
 
 const theme = { global: { colors: { doc: "#ff99cc" } } };
 
