@@ -16,7 +16,8 @@ const [dataAvailable, setDataAvailable] = useState(false);
   }, [])
 
   useEffect(() => {
-    setDataAvailable(true)
+    const returnedArray = Array.from(playerData)
+    console.log(returnedArray);
   }, [playerData])
 
   function getScores() {
@@ -32,6 +33,9 @@ const [dataAvailable, setDataAvailable] = useState(false);
         return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
         })}
   }
+
+  const returnedArray = Array.from(playerData)
+    console.log(returnedArray);
 
   return (
     <Container>
@@ -52,8 +56,11 @@ const [dataAvailable, setDataAvailable] = useState(false);
         </tr>
       </thead>
       <tbody>
-        {playerData && playerData.length > 0 ? playerData.map((score, i) => {
-         return <LeaderboardRow key={i} playerData={playerData} player={score.name} score={score.score} rank={i+1}/> }) : <tr></tr>}
+      {returnedArray.map((score, i) => {
+       return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
+       })}
+        {/* {playerData && playerData.length > 0 ? playerData.map((score, i) => {
+         return <LeaderboardRow key={i} playerData={playerData} player={score.name} score={score.score} rank={i+1}/> }) : <tr></tr>} */}
        {/* {dataAvailable ? playerData && playerData.map((score, i) => {
        return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
        }) : null } */}
