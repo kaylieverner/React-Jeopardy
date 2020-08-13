@@ -52,8 +52,8 @@ const [dataAvailable, setDataAvailable] = useState(false);
         </tr>
       </thead>
       <tbody>
-        {/* {playerData.length > 0 ? playerData.map((score, i) => {
-         return <LeaderboardRow key={i} playerData={playerData} player={score.name} score={score.score} rank={i+1}/> }) : <tr></tr>} */}
+        {playerData && playerData.length > 0 ? playerData.map((score, i) => {
+         return <LeaderboardRow key={i} playerData={playerData} player={score.name} score={score.score} rank={i+1}/> }) : <tr></tr>}
        {/* {dataAvailable ? playerData && playerData.map((score, i) => {
        return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
        }) : null } */}
