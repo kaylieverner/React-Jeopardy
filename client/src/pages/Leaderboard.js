@@ -11,6 +11,7 @@ const [playerData, setPlayerData] = useState([]);
 const [dataAvailable, setDataAvailable] = useState(false);
 
   useEffect(() => {
+    console.log("start")
     getScores()
   }, [])
 
@@ -51,8 +52,8 @@ const [dataAvailable, setDataAvailable] = useState(false);
         </tr>
       </thead>
       <tbody>
-        {dataAvailable ? playerData.map((score, i) => {
-       return  <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/> }) : <p></p>}
+        {playerData.length > 0 ? playerData.map((score, i) => {
+         return <LeaderboardRow key={i} playerData={playerData} player={score.name} score={score.score} rank={i+1}/> }) : <tr></tr>}
        {/* {dataAvailable ? playerData && playerData.map((score, i) => {
        return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
        }) : null } */}
