@@ -19,7 +19,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/public"));
 }
-
 // if (process.env.JAWSDB_URL) {
 //   connection = mysql.createConnection(process.env.JAWSDB_URL)
 // } 
