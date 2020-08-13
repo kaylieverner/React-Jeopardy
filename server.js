@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("client/build"));
 // }
-require("./routes/htmlRoutes.js");
+// require("./routes/htmlRoutes.js");
 require("./routes/api-routes.js")(app);
 
 if (process.env.NODE_ENV === "production") {
