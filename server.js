@@ -15,6 +15,12 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+require("./config/passport")(passport);
+
+
+
 //Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("client/build"));
@@ -40,10 +46,6 @@ app.set('view engine', 'ejs');
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
 );
-
-app.use(passport.initialize());
-app.use(passport.session());
-require("./config/passport")(passport);
 
 
 
