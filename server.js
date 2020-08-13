@@ -19,6 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // if (process.env.NODE_ENV === "production") {
 //   app.use(express.static("client/build"));
 // }
+require("./routes/htmlRoutes.js");
+require("./routes/api-routes.js")(app);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -43,8 +45,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 require("./config/passport")(passport);
 
-require("./routes/htmlRoutes.js");
-require("./routes/api-routes.js")(app);
+
 
 db.sequelize.sync().then(function () {
   app.listen(PORT, function () {
