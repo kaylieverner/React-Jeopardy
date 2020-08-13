@@ -12,10 +12,10 @@ export default {
     return axios.get("https://jservice.io/api/random")
   },
   savePlayersScores: function(playerData) {
-    return axios.post("/api/playersScores/", playerData)
+    return axios.post("/api/players-scores/", playerData)
   },
   getPlayersScores: function() {
-    return axios.get("/api/playersScores/")
+    return axios.get("/api/players-scores/")
   }, 
   signUpUser: function(userData) {
     return axios.post("/signup", userData)
