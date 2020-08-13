@@ -23,13 +23,12 @@ const [dataAvailable, setDataAvailable] = useState(false);
   }
 
   // function loadLeaderboard() {
-  //      {playerData.map((score, i) => {
-  //       return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
-  //       })}
+  //   {returnedArray.map((score, i) => {
+  //     return <LeaderboardRow key={i} playerData={playerData} player={score.name} score={score.score} rank={i+1}/> })}
   // }
 
   const returnedArray = Array.from(playerData)
-    console.log(returnedArray);
+  console.log(returnedArray);
 
   return (
     <Container>
@@ -50,11 +49,12 @@ const [dataAvailable, setDataAvailable] = useState(false);
         </tr>
       </thead>
       <tbody>
-      {returnedArray.map((score, i) => {
-       return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
-       })}
-        {/* {playerData && playerData.length > 0 ? playerData.map((score, i) => {
-         return <LeaderboardRow key={i} playerData={playerData} player={score.name} score={score.score} rank={i+1}/> }) : <tr></tr>} */}
+      {returnedArray.length === 10 ? returnedArray.map((score, i) => {
+         return <LeaderboardRow key={i} playerData={playerData} player={score.name} score={score.score} rank={i+1}/> }) : null}
+      {/* {returnedArray.map((score, i) => {
+       return <LeaderboardRow playerData={playerData} returnedArray={returnedArray} player={score.name} score={score.score} rank={i+1}/>
+       })} */}
+        
        {/* {dataAvailable ? playerData && playerData.map((score, i) => {
        return <LeaderboardRow playerData={playerData} player={score.name} score={score.score} rank={i+1}/>
        }) : null } */}
