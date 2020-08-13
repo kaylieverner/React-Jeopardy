@@ -81,7 +81,8 @@ module.exports = function (app) {
 
   //kaylie
    // GET route for getting all of the scores
-   app.get("/api/playersScores/", function(req, res) {
+   app.get("/api/players-scores/", function(req, res) {
+    console.log("---- HIT api/playerScores -----")
     db.Score.findAll({ limit: 10, order: [ ["score",  "DESC"] ]}).then(function(dbPost) {
         res.json(dbPost);
       });
@@ -89,8 +90,7 @@ module.exports = function (app) {
 
 
   // POST route for saving a new score
-  app.post("/api/playersScores/", function(req, res) {
-    console.log("---- HIT api/playerScores -----")
+  app.post("/api/players-scores/", function(req, res) {
     db.Score.create({
         name: req.body.name,
         score: req.body.score
